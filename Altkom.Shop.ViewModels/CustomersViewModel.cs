@@ -11,6 +11,8 @@ namespace Altkom.Shop.ViewModels
     {
         public IEnumerable<Customer> Customers { get; set; }
 
+        public Customer SelectedCustomer { get; set; }
+
         private readonly ICustomerService customerService;
 
         public CustomersViewModel()

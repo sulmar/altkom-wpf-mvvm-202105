@@ -7,6 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="clr-namespace:Altkom.Shop.ViewModels;assembly=Altkom.Shop.ViewModels"
     Title="CustomersView"
+    d:Background="White"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
@@ -17,7 +18,28 @@
 
     <Grid>
 
-        <ListBox DisplayMemberPath="FullName" ItemsSource="{Binding Path=Customers}" />
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <!--  Customers  -->
+        <ListBox
+            DisplayMemberPath="FullName"
+            ItemsSource="{Binding Path=Customers}"
+            SelectedItem="{Binding Path=SelectedCustomer}" />
+
+        <!--  Selected Customer  -->
+        <StackPanel Grid.Column="1">
+
+            <TextBlock Text="{Binding Path=SelectedCustomer.FullName}" />
+
+            <Label>First name</Label>
+            <TextBox Text="{Binding Path=SelectedCustomer.FirstName}" />
+
+            <Label>Last name</Label>
+            <TextBox Text="{Binding Path=SelectedCustomer.LastName}" />
+        </StackPanel>
 
     </Grid>
 </Page>
