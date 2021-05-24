@@ -6,4 +6,8 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Altkom.Shop.ViewModels\Altkom.Shop.ViewModels.csproj" />
+  </ItemGroup>
+
 </Project>
