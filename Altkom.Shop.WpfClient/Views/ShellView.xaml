@@ -19,11 +19,15 @@
         <sys:Double x:Key="ButtonHeight">70</sys:Double>
         <Thickness x:Key="MyMargin">5</Thickness>
 
-        <Style x:Key="MyButtonStyle" TargetType="Button">
+        <Style x:Key="DefaultButtonStyle" TargetType="Button">
             <Setter Property="Background" Value="{StaticResource MyBackgroundBrush}" />
             <Setter Property="Foreground" Value="{StaticResource MyForegroundBrush}" />
-            <Setter Property="Height" Value="50" />
-            <Setter Property="Margin" Value="10" />
+            <Setter Property="Height" Value="70" />
+            <Setter Property="Margin" Value="5" />
+        </Style>
+
+        <Style x:Key="PrimaryButtonStyle" TargetType="Button" BasedOn="{StaticResource DefaultButtonStyle}">
+            <Setter Property="Background" Value="Green" />
         </Style>
 
     </Window.Resources>
@@ -43,19 +47,19 @@
 
         <StackPanel Grid.Row="1">
 
-            <Button Style="{StaticResource MyButtonStyle}">
+            <Button Style="{StaticResource PrimaryButtonStyle}">
                 Customers
             </Button>
 
-            <Button Style="{StaticResource MyButtonStyle}">
+            <Button Style="{StaticResource DefaultButtonStyle}">
                 Products
             </Button>
 
-            <Button Style="{StaticResource MyButtonStyle}">
+            <Button Style="{StaticResource DefaultButtonStyle}">
                 Services
             </Button>
 
-            <Button Style="{StaticResource MyButtonStyle}">
+            <Button Style="{StaticResource DefaultButtonStyle}">
                 Orders
             </Button>
 
