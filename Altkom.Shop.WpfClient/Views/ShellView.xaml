@@ -12,11 +12,19 @@
     mc:Ignorable="d">
 
     <Window.Resources>
-        <SolidColorBrush x:Key="MyBackgroundBrush" Color="DarkBlue" />
+
+        <SolidColorBrush x:Key="MyBackgroundBrush" Color="DarkMagenta" />
         <SolidColorBrush x:Key="MyForegroundBrush" Color="White" />
 
         <sys:Double x:Key="ButtonHeight">70</sys:Double>
         <Thickness x:Key="MyMargin">5</Thickness>
+
+        <Style x:Key="MyButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource MyBackgroundBrush}" />
+            <Setter Property="Foreground" Value="{StaticResource MyForegroundBrush}" />
+            <Setter Property="Height" Value="50" />
+            <Setter Property="Margin" Value="10" />
+        </Style>
 
     </Window.Resources>
 
@@ -35,35 +43,19 @@
 
         <StackPanel Grid.Row="1">
 
-            <Button
-                Height="{StaticResource ButtonHeight}"
-                Margin="{StaticResource MyMargin}"
-                Background="{StaticResource MyBackgroundBrush}"
-                Foreground="{StaticResource MyForegroundBrush}">
+            <Button Style="{StaticResource MyButtonStyle}">
                 Customers
             </Button>
 
-            <Button
-                Height="{StaticResource ButtonHeight}"
-                Margin="{StaticResource MyMargin}"
-                Background="{StaticResource MyBackgroundBrush}"
-                Foreground="{StaticResource MyForegroundBrush}">
+            <Button Style="{StaticResource MyButtonStyle}">
                 Products
             </Button>
 
-            <Button
-                Height="{StaticResource ButtonHeight}"
-                Margin="{StaticResource MyMargin}"
-                Background="{StaticResource MyBackgroundBrush}"
-                Foreground="{StaticResource MyForegroundBrush}">
+            <Button Style="{StaticResource MyButtonStyle}">
                 Services
             </Button>
 
-            <Button
-                Height="{StaticResource ButtonHeight}"
-                Margin="{StaticResource MyMargin}"
-                Background="{StaticResource MyBackgroundBrush}"
-                Foreground="{StaticResource MyForegroundBrush}">
+            <Button Style="{StaticResource MyButtonStyle}">
                 Orders
             </Button>
 
