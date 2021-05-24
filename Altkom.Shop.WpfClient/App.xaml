@@ -7,25 +7,7 @@
 
     <Application.Resources>
 
-        <SolidColorBrush x:Key="MyBackgroundBrush" Color="DarkMagenta" />
-        <SolidColorBrush x:Key="MyForegroundBrush" Color="White" />
-
-        <Style x:Key="DefaultButtonStyle" TargetType="Button">
-            <Setter Property="Background" Value="{StaticResource MyBackgroundBrush}" />
-            <Setter Property="Foreground" Value="{StaticResource MyForegroundBrush}" />
-            <Setter Property="Height" Value="70" />
-            <Setter Property="Margin" Value="5" />
-        </Style>
-
-        <Style BasedOn="{StaticResource DefaultButtonStyle}" TargetType="Button" />
-
-        <Style
-            x:Key="PrimaryButtonStyle"
-            BasedOn="{StaticResource DefaultButtonStyle}"
-            TargetType="Button">
-            <Setter Property="Background" Value="Green" />
-        </Style>
-
+        <ResourceDictionary Source="Resources/Styles.xaml" />
 
     </Application.Resources>
 </Application>
