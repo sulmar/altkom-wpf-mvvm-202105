@@ -4,5 +4,28 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:Altkom.Shop.WpfClient"
     StartupUri="Views/ShellView.xaml">
-    <Application.Resources />
+
+    <Application.Resources>
+
+        <SolidColorBrush x:Key="MyBackgroundBrush" Color="DarkMagenta" />
+        <SolidColorBrush x:Key="MyForegroundBrush" Color="White" />
+
+        <Style x:Key="DefaultButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource MyBackgroundBrush}" />
+            <Setter Property="Foreground" Value="{StaticResource MyForegroundBrush}" />
+            <Setter Property="Height" Value="70" />
+            <Setter Property="Margin" Value="5" />
+        </Style>
+
+        <Style BasedOn="{StaticResource DefaultButtonStyle}" TargetType="Button" />
+
+        <Style
+            x:Key="PrimaryButtonStyle"
+            BasedOn="{StaticResource DefaultButtonStyle}"
+            TargetType="Button">
+            <Setter Property="Background" Value="Green" />
+        </Style>
+
+
+    </Application.Resources>
 </Application>

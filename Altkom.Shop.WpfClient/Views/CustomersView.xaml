@@ -39,6 +39,8 @@
 
             <Label>Last name</Label>
             <TextBox Text="{Binding SelectedCustomer.LastName}" />
+
+            <Button>Save</Button>
         </StackPanel>
 
     </Grid>
