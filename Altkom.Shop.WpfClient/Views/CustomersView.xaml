@@ -32,13 +32,13 @@
         <!--  Selected Customer  -->
         <StackPanel Grid.Column="1">
 
-            <TextBlock Text="{Binding Path=SelectedCustomer.FullName}" />
+            <TextBlock Text="{Binding SelectedCustomer.FullName}" />
 
             <Label>First name</Label>
-            <TextBox Text="{Binding Path=SelectedCustomer.FirstName}" />
+            <TextBox Text="{Binding SelectedCustomer.FirstName}" />
 
             <Label>Last name</Label>
-            <TextBox Text="{Binding Path=SelectedCustomer.LastName}" />
+            <TextBox Text="{Binding SelectedCustomer.LastName}" />
         </StackPanel>
 
     </Grid>

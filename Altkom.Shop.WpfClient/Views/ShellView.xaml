@@ -5,10 +5,21 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:Altkom.Shop.WpfClient.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
     Title="ShellView"
     Width="800"
     Height="450"
     mc:Ignorable="d">
+
+    <Window.Resources>
+        <SolidColorBrush x:Key="MyBackgroundBrush" Color="DarkBlue" />
+        <SolidColorBrush x:Key="MyForegroundBrush" Color="White" />
+
+        <sys:Double x:Key="ButtonHeight">70</sys:Double>
+        <Thickness x:Key="MyMargin">5</Thickness>
+
+    </Window.Resources>
+
     <Grid>
 
         <Grid.RowDefinitions>
@@ -24,10 +35,37 @@
 
         <StackPanel Grid.Row="1">
 
-            <Button Height="50" Margin="5">Customers</Button>
-            <Button Height="50" Margin="5">Products</Button>
-            <Button Height="50" Margin="5">Services</Button>
-            <Button Height="50" Margin="5">Orders</Button>
+            <Button
+                Height="{StaticResource ButtonHeight}"
+                Margin="{StaticResource MyMargin}"
+                Background="{StaticResource MyBackgroundBrush}"
+                Foreground="{StaticResource MyForegroundBrush}">
+                Customers
+            </Button>
+
+            <Button
+                Height="{StaticResource ButtonHeight}"
+                Margin="{StaticResource MyMargin}"
+                Background="{StaticResource MyBackgroundBrush}"
+                Foreground="{StaticResource MyForegroundBrush}">
+                Products
+            </Button>
+
+            <Button
+                Height="{StaticResource ButtonHeight}"
+                Margin="{StaticResource MyMargin}"
+                Background="{StaticResource MyBackgroundBrush}"
+                Foreground="{StaticResource MyForegroundBrush}">
+                Services
+            </Button>
+
+            <Button
+                Height="{StaticResource ButtonHeight}"
+                Margin="{StaticResource MyMargin}"
+                Background="{StaticResource MyBackgroundBrush}"
+                Foreground="{StaticResource MyForegroundBrush}">
+                Orders
+            </Button>
 
         </StackPanel>
 
@@ -36,9 +74,10 @@
         <StackPanel Grid.Column="1" Background="Blue" />
 
 
-        <Frame Source="CustomersView.xaml"
-               Grid.Column="1" Grid.Row="1"
-               />
+        <Frame
+            Grid.Row="1"
+            Grid.Column="1"
+            Source="CustomersView.xaml" />
 
 
 
