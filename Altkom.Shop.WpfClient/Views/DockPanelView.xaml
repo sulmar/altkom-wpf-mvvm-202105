@@ -1,0 +1,52 @@
+﻿<Window
+    x:Class="Altkom.Shop.WpfClient.Views.DockPanelView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Altkom.Shop.WpfClient.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="DockPanelView"
+    Width="1000"
+    Height="450"
+    mc:Ignorable="d">
+
+    <DockPanel>
+
+        <Button
+            Height="50"
+            Background="Blue"
+            DockPanel.Dock="Top">
+            Blue
+        </Button>
+
+        <Button Background="Red" DockPanel.Dock="Bottom">
+            Red
+        </Button>
+
+        <Button
+            Width="100"
+            Background="LightGreen"
+            DockPanel.Dock="Left">
+            Green
+        </Button>
+
+        <Button
+            Width="100"
+            Background="Green"
+            DockPanel.Dock="Left">
+            Green
+        </Button>
+
+        <Button
+            Width="100"
+            Background="Yellow"
+            DockPanel.Dock="Right">
+            Red
+        </Button>
+
+        <Button Background="Orange">
+            Red
+        </Button>
+
+    </DockPanel>
+</Window>
