@@ -67,7 +67,7 @@
         <Frame
             Grid.Row="1"
             Grid.Column="1"
-            Source="CustomersView.xaml" />
+            Source="ProductsView.xaml" />
 
 
 

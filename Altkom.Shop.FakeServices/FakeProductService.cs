@@ -1,4 +1,5 @@
-﻿using Altkom.Shop.IServices;
+﻿using Altkom.Shop.FakeServices.Fakers;
+using Altkom.Shop.IServices;
 using Altkom.Shop.Models;
 using Bogus;
 using System.Collections.Generic;
@@ -8,6 +9,12 @@ namespace Altkom.Shop.FakeServices
 {
     public class FakeProductService : FakeEntityService<Product>, IProductService
     {
+        public FakeProductService()
+            : this(new ProductFaker())
+        {
+
+        }
+
         public FakeProductService(Faker<Product> faker) : base(faker)
         {
         }
