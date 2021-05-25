@@ -36,6 +36,8 @@ namespace Altkom.Shop.ViewModels
         public void Send()
         {
             Trace.WriteLine($"Send to {SelectedCustomer.FullName}");
+
+            SelectedCustomer.FirstName = SelectedCustomer.FirstName + "!";
         }
 
 
