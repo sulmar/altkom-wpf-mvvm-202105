@@ -2,50 +2,15 @@
 using Altkom.Shop.IServices;
 using Altkom.Shop.Models;
 using Bogus;
-using System;
-using System.Collections.Generic;
+using System.Linq;
 
 namespace Altkom.Shop.FakeServices
 {
-    public class FakeCustomerService : ICustomerService
+
+    public class FakeCustomerService : FakeEntityService<Customer>, ICustomerService
     {
-        private ICollection<Customer> customers;
-
-        public FakeCustomerService()
-            : this(new CustomerFaker())
+        public FakeCustomerService(Faker<Customer> faker) : base(faker)
         {
-
-        }
-
-        // snippet: ctor + 2 x TAB
-        public FakeCustomerService(Faker<Customer> faker)
-        {
-            customers = faker.Generate(100);
-        }
-
-        public void Add(Customer customer)
-        {
-            customers.Add(customer);
-        }
-
-        public IEnumerable<Customer> Get()
-        {
-            return customers;
-        }
-
-        public Customer Get(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Remove(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(Customer customer)
-        {
-            throw new NotImplementedException();
         }
     }
 }
