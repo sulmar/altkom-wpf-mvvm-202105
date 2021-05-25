@@ -4,5 +4,6 @@
     {
         public string Color { get; set; }
         public float Weight { get; set; }
+        public byte[] Photo { get; set; }
     }
 }

@@ -36,31 +36,58 @@
         </Grid.ColumnDefinitions>
 
 
-        <StackPanel Grid.Row="1">
+        <StackPanel Grid.Row="1" Background="Purple">
 
             <Button
+                HorizontalContentAlignment="Left"
+                BorderBrush="Transparent"
                 Command="{Binding ShowViewCommand}"
                 CommandParameter="CustomersView.xaml"
                 Style="{StaticResource PrimaryButtonStyle}">
-                Customers
+
+                <DockPanel>
+                    <Image Source="{StaticResource CustomersImage}" />
+                    <TextBlock VerticalAlignment="Center" FontSize="18">Customers</TextBlock>
+                </DockPanel>
+
             </Button>
 
-            <Button Command="{Binding ShowViewCommand}" CommandParameter="ProductsView.xaml">
-                Products
+            <Button
+                HorizontalContentAlignment="Left"
+                BorderBrush="Transparent"
+                Command="{Binding ShowViewCommand}"
+                CommandParameter="ProductsView.xaml">
+                <DockPanel>
+                    <Image Width="50" Source="{StaticResource ProductsImage}" />
+                    <TextBlock VerticalAlignment="Center" FontSize="18">Products</TextBlock>
+                </DockPanel>
             </Button>
 
-            <Button Command="{Binding ShowViewCommand}" CommandParameter="ServicesView.xaml">
-                Services
+            <Button
+                HorizontalContentAlignment="Left"
+                BorderBrush="Transparent"
+                Command="{Binding ShowViewCommand}"
+                CommandParameter="ServicesView.xaml">
+                <DockPanel>
+                    <Image Width="50" Source="{StaticResource ServicesImage}" />
+                    <TextBlock VerticalAlignment="Center" FontSize="18">Services</TextBlock>
+                </DockPanel>
+
             </Button>
 
-            <Button>
-                Orders
+            <Button HorizontalContentAlignment="Left" BorderBrush="Transparent">
+                <DockPanel>
+                    <Image Width="50" Source="{StaticResource OrdersImage}" />
+                    <TextBlock VerticalAlignment="Center" FontSize="18">Orders</TextBlock>
+                </DockPanel>
             </Button>
 
-            <Button>
-                Settings
+            <Button HorizontalContentAlignment="Left" BorderBrush="Transparent">
+                <DockPanel>
+                    <Image Width="50" Source="{StaticResource SettingsImage}" />
+                    <TextBlock VerticalAlignment="Center" FontSize="18">Settings</TextBlock>
+                </DockPanel>
             </Button>
-
         </StackPanel>
 
         <StackPanel Background="Blue" />

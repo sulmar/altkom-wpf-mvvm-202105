@@ -1,0 +1,11 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <BitmapImage x:Key="CustomersImage" UriSource="/Assets/Users.png" />
+    <BitmapImage x:Key="ProductsImage" UriSource="/Assets/Products.png" />
+    <BitmapImage x:Key="ServicesImage" UriSource="/Assets/Services.png" />
+    <BitmapImage x:Key="OrdersImage" UriSource="/Assets/Orders.png" />
+    <BitmapImage x:Key="SettingsImage" UriSource="/Assets/Settings.png" />
+
+    <BitmapImage x:Key="ServiceImage" UriSource="https://picsum.photos/640/480/?image=481" />
+
+</ResourceDictionary>

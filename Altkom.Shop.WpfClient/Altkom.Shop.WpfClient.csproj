@@ -7,7 +7,23 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\Orders.png" />
+    <None Remove="Assets\Products.png" />
+    <None Remove="Assets\Services.png" />
+    <None Remove="Assets\Settings.png" />
+    <None Remove="Assets\Users.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Altkom.Shop.ViewModels\Altkom.Shop.ViewModels.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\Orders.png" />
+    <Resource Include="Assets\Products.png" />
+    <Resource Include="Assets\Services.png" />
+    <Resource Include="Assets\Settings.png" />
+    <Resource Include="Assets\Users.png" />
   </ItemGroup>
 
 </Project>
