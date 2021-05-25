@@ -3,6 +3,8 @@ using Altkom.Shop.IServices;
 using Altkom.Shop.Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Windows.Input;
 
 namespace Altkom.Shop.ViewModels
 {
@@ -15,6 +17,8 @@ namespace Altkom.Shop.ViewModels
 
         private readonly ICustomerService customerService;
 
+        public ICommand SendCommand { get; private set; }
+
         public CustomersViewModel()
             : this(new FakeCustomerService())
         {
@@ -25,7 +29,15 @@ namespace Altkom.Shop.ViewModels
             this.customerService = customerService;
 
             Customers = this.customerService.Get();
+
+            SendCommand = new DelegateCommand(Send);
         }
+
+        public void Send()
+        {
+            Trace.WriteLine($"Send to {SelectedCustomer.FullName}");
+        }
+
 
     }
 }

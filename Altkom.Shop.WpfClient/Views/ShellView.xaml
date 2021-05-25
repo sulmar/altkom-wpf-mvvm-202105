@@ -13,12 +13,12 @@
 
     <Window.Resources>
 
-  
+
 
         <sys:Double x:Key="ButtonHeight">70</sys:Double>
         <Thickness x:Key="MyMargin">5</Thickness>
 
-        
+
 
     </Window.Resources>
 
@@ -67,7 +67,7 @@
         <Frame
             Grid.Row="1"
             Grid.Column="1"
-            Source="ProductsView.xaml" />
+            Source="CustomersView.xaml" />
 
 
 
