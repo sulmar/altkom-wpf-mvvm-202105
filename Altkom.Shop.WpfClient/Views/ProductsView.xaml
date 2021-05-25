@@ -7,6 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="clr-namespace:Altkom.Shop.ViewModels;assembly=Altkom.Shop.ViewModels"
     Title="ProductsView"
+    d:Background="White"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
@@ -23,9 +24,11 @@
         </Grid.ColumnDefinitions>
 
         <ListBox
+            Margin="5"
             DisplayMemberPath="Name"
             ItemsSource="{Binding Products}"
-            SelectedItem="{Binding SelectedProduct}" />
+            SelectedItem="{Binding SelectedProduct}"
+            Template="{StaticResource RounderListBoxTemplate}" />
 
 
         <!--  Selected Product  -->

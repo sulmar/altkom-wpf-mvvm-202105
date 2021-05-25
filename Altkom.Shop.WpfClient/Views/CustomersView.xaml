@@ -25,9 +25,13 @@
 
         <!--  Customers  -->
         <ListBox
+            Margin="5"
+            BorderBrush="Green"
+            BorderThickness="3"
             ItemTemplate="{StaticResource CustomerTemplate}"
             ItemsSource="{Binding Path=Customers}"
-            SelectedItem="{Binding Path=SelectedCustomer}" />
+            SelectedItem="{Binding Path=SelectedCustomer}"
+            Template="{StaticResource RounderListBoxTemplate}" />
 
         <!--  Selected Customer  -->
         <StackPanel Grid.Column="1">
@@ -45,7 +49,30 @@
             <Label>Last name</Label>
             <TextBox Text="{Binding SelectedCustomer.LastName}" />
 
+            <GroupBox Header="Ship address">
+                <StackPanel>
+                    <Label>City</Label>
+                    <TextBox Text="{Binding SelectedCustomer.ShipAddress.City}" />
+
+                    <Label>Country</Label>
+                    <TextBox Text="{Binding SelectedCustomer.ShipAddress.Country}" />
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox Header="Invoice address">
+                <StackPanel>
+                    <Label>City</Label>
+                    <TextBox Text="{Binding SelectedCustomer.InvoiceAddress.City}" />
+
+                    <Label>Country</Label>
+                    <TextBox Text="{Binding SelectedCustomer.InvoiceAddress.Country}" />
+                </StackPanel>
+            </GroupBox>
+
             <Button Command="{Binding SendCommand}">Send</Button>
+
+
+
         </StackPanel>
 
     </Grid>
