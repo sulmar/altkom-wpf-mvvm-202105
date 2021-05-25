@@ -12,15 +12,22 @@ namespace Altkom.Shop.ViewModels
         public event EventHandler CanExecuteChanged;
 
         private readonly Action execute;
+        private readonly Func<bool> canExecute;
+
+        public DelegateCommand(Action execute, Func<bool> canExecute = null)
+        {
+            this.execute = execute;
+            this.canExecute = canExecute;
+        }
 
         public bool CanExecute(object parameter)
         {
-            throw new NotImplementedException();
+            return canExecute == null || canExecute();
         }
 
         public void Execute(object parameter)
         {
-            throw new NotImplementedException();
+            execute?.Invoke();
         }
     }
 }

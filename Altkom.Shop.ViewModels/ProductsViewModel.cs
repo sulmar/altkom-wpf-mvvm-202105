@@ -3,6 +3,7 @@ using Altkom.Shop.IServices;
 using Altkom.Shop.Models;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Input;
 
 namespace Altkom.Shop.ViewModels
 {
@@ -13,6 +14,8 @@ namespace Altkom.Shop.ViewModels
         public IEnumerable<string> Colors { get; set; }
 
         public Product SelectedProduct { get; set; }
+
+        public ICommand SaveCommand { get; private set; }
 
         private readonly IProductService productService;
 
@@ -29,11 +32,21 @@ namespace Altkom.Shop.ViewModels
             Products = productService.Get();
 
             Colors = Products.Select(p => p.Color).Distinct().ToList();
+
+            SaveCommand = new DelegateCommand(Save, CanSave);
         }
 
         public void Save()
         {
+            if (SelectedProduct.Id == 0)
+                productService.Add(SelectedProduct);
+            else
+                productService.Update(SelectedProduct);
+        }
 
+        public bool CanSave()
+        {
+            return true;
         }
     }
 }

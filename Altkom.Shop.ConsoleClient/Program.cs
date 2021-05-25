@@ -18,6 +18,10 @@ namespace Altkom.Shop.ConsoleClient
 
             Delegate[] delegates = motorolaRadio.Log.GetInvocationList();
 
+            motorolaRadio.Log("Bla bla");
+
+            // motorolaRadio.LogEvent("gfgfgfg");
+
             motorolaRadio.Call(255);
            
 
@@ -48,16 +52,23 @@ namespace Altkom.Shop.ConsoleClient
     public class MotorolaRadio
     {
         public delegate void LogDelegate(string content);
+        //public LogDelegate Log { get; set; }
 
-        public LogDelegate Log { get; set; }
+        public Action<string> Log { get; set; }
+
+        public event LogDelegate LogEvent;
 
         public void Call(byte channel)
         {
             Log?.Invoke($"LOG: selected {channel}");
 
+            LogEvent?.Invoke($"LOG: selected {channel}");
+
             // ..
 
             Log?.Invoke($"LOG: missing call");
+
+            LogEvent?.Invoke($"LOG: missing call");
 
         }
 
