@@ -6,19 +6,20 @@
     xmlns:local="clr-namespace:Altkom.Shop.WpfClient.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:vm="clr-namespace:Altkom.Shop.ViewModels;assembly=Altkom.Shop.ViewModels"
     Title="ShellView"
     Width="800"
     Height="650"
     mc:Ignorable="d">
 
+    <Window.DataContext>
+        <vm:ShellViewModel />
+    </Window.DataContext>
+
     <Window.Resources>
-
-
 
         <sys:Double x:Key="ButtonHeight">70</sys:Double>
         <Thickness x:Key="MyMargin">5</Thickness>
-
-
 
     </Window.Resources>
 
@@ -37,15 +38,18 @@
 
         <StackPanel Grid.Row="1">
 
-            <Button Command="" Style="{StaticResource PrimaryButtonStyle}">
+            <Button
+                Command="{Binding ShowViewCommand}"
+                CommandParameter="CustomersView.xaml"
+                Style="{StaticResource PrimaryButtonStyle}">
                 Customers
             </Button>
 
-            <Button>
+            <Button Command="{Binding ShowViewCommand}" CommandParameter="ProductsView.xaml">
                 Products
             </Button>
 
-            <Button>
+            <Button Command="{Binding ShowViewCommand}" CommandParameter="ServicesView.xaml">
                 Services
             </Button>
 
@@ -67,7 +71,7 @@
         <Frame
             Grid.Row="1"
             Grid.Column="1"
-            Source="CustomersView.xaml" />
+            Source="{Binding SelectedView}" />
 
 
 
