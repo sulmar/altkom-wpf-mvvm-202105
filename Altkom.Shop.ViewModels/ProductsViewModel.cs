@@ -13,11 +13,19 @@ namespace Altkom.Shop.ViewModels
 
         public IEnumerable<string> Colors { get; set; }
 
-        public Product SelectedProduct { get; set; }
+        public Product SelectedProduct
+        {
+            get => selectedProduct; set
+            {
+                selectedProduct = value;
+                OnPropertyChanged();
+            }
+        }
 
         public ICommand SaveCommand { get; private set; }
 
         private readonly IProductService productService;
+        private Product selectedProduct;
 
         public ProductsViewModel()
             : this(new FakeProductService())
