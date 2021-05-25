@@ -30,5 +30,10 @@ namespace Altkom.Shop.ViewModels
 
             Colors = Products.Select(p => p.Color).Distinct().ToList();
         }
+
+        public void Save()
+        {
+
+        }
     }
 }

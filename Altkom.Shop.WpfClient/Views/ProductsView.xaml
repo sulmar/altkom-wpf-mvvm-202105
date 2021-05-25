@@ -44,6 +44,8 @@
             <Label>Color</Label>
             <ComboBox ItemsSource="{Binding Colors}" />
 
+            <Button Command="{Binding Save}">Save</Button>
+
 
 
         </StackPanel>

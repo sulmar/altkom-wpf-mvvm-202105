@@ -5,13 +5,15 @@ VisualStudioVersion = 16.0.31313.79
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Altkom.Shop.Models", "Altkom.Shop.Models\Altkom.Shop.Models.csproj", "{02922308-A293-479F-BDE9-08C6AAC238FF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altkom.Shop.WpfClient", "Altkom.Shop.WpfClient\Altkom.Shop.WpfClient.csproj", "{8CCC14FD-78D4-40FC-8E67-AFD7E4839916}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Altkom.Shop.WpfClient", "Altkom.Shop.WpfClient\Altkom.Shop.WpfClient.csproj", "{8CCC14FD-78D4-40FC-8E67-AFD7E4839916}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altkom.Shop.ViewModels", "Altkom.Shop.ViewModels\Altkom.Shop.ViewModels.csproj", "{258D3A8A-2877-4A2A-BD34-B17BE7CB7FE6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Altkom.Shop.ViewModels", "Altkom.Shop.ViewModels\Altkom.Shop.ViewModels.csproj", "{258D3A8A-2877-4A2A-BD34-B17BE7CB7FE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altkom.Shop.IServices", "Altkom.Shop.IServices\Altkom.Shop.IServices.csproj", "{E6D35240-A013-438D-88E0-7BB8DE0763B1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Altkom.Shop.IServices", "Altkom.Shop.IServices\Altkom.Shop.IServices.csproj", "{E6D35240-A013-438D-88E0-7BB8DE0763B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altkom.Shop.FakeServices", "Altkom.Shop.FakeServices\Altkom.Shop.FakeServices.csproj", "{CE4711E0-13BB-4FAD-B439-F837DE7901FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Altkom.Shop.FakeServices", "Altkom.Shop.FakeServices\Altkom.Shop.FakeServices.csproj", "{CE4711E0-13BB-4FAD-B439-F837DE7901FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altkom.Shop.ConsoleClient", "Altkom.Shop.ConsoleClient\Altkom.Shop.ConsoleClient.csproj", "{390C036C-43C0-41FB-9E80-86878EE072A3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{CE4711E0-13BB-4FAD-B439-F837DE7901FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE4711E0-13BB-4FAD-B439-F837DE7901FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE4711E0-13BB-4FAD-B439-F837DE7901FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{390C036C-43C0-41FB-9E80-86878EE072A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{390C036C-43C0-41FB-9E80-86878EE072A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{390C036C-43C0-41FB-9E80-86878EE072A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{390C036C-43C0-41FB-9E80-86878EE072A3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
