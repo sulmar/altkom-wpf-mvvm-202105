@@ -34,11 +34,16 @@ namespace Altkom.Shop.WpfClient
             containerBuilder.RegisterType<ProductFaker>().As<Faker<Product>>();
             // containerBuilder.RegisterType<ProductsViewModel>();
 
+            containerBuilder.RegisterType<FakeServiceService>().As<IServiceService>();
+            containerBuilder.RegisterType<ServiceFaker>().As<Faker<Service>>();
+
             // containerBuilder.RegisterType<ShellViewModel>();
 
             // Automatyzacja rejestracji
             containerBuilder.RegisterAssemblyTypes(typeof(BaseViewModel).Assembly) 
                 .Where(t => t.IsSubclassOf(typeof(BaseViewModel))); // Zarejestruj wszystkie klasy, które dziedziczą po BaseViewModel
+
+                
 
 
             container = containerBuilder.Build();
@@ -49,6 +54,7 @@ namespace Altkom.Shop.WpfClient
 
         public CustomersViewModel CustomersViewModel => container.Resolve<CustomersViewModel>();
         public ProductsViewModel ProductsViewModel => container.Resolve<ProductsViewModel>();
+        public ServicesViewModel ServicesViewModel => container.Resolve<ServicesViewModel>();
         public ShellViewModel ShellViewModel => container.Resolve<ShellViewModel>();
     }
 }

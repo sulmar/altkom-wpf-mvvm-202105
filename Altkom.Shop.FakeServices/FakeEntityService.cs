@@ -14,7 +14,7 @@ namespace Altkom.Shop.FakeServices
 
         public FakeEntityService(Faker<TEntity> faker)
         {
-            entities = faker.Generate(50);
+            entities = faker.Generate(10);
         }
 
         public void Add(TEntity entity)

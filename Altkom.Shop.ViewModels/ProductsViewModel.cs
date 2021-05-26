@@ -7,6 +7,7 @@ using System.Windows.Input;
 
 namespace Altkom.Shop.ViewModels
 {
+
     public class ProductsViewModel : BaseViewModel
     {
         public IEnumerable<Product> Products { get; set; }

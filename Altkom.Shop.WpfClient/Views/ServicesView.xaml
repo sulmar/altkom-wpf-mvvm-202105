@@ -8,12 +8,23 @@
     Title="ServicesView"
     d:DesignHeight="450"
     d:DesignWidth="800"
+    DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=ServicesViewModel}"
     mc:Ignorable="d">
 
     <Grid>
 
-        <Image Source="{StaticResource ServiceImage}" />
+        <TabControl ContentTemplate="{StaticResource ServiceTemplate}" ItemsSource="{Binding Services}">
 
+            <TabControl.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Width="10" Source="{StaticResource ServicesImage}" />
+                        <TextBlock Text="{Binding Name}" />
+                    </StackPanel>
+                </DataTemplate>
+            </TabControl.ItemTemplate>
+
+        </TabControl>
 
     </Grid>
 </Page>

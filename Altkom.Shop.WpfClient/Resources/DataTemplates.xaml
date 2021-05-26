@@ -41,6 +41,16 @@
 
     </DataTemplate>
 
+    <DataTemplate x:Key="ServiceTemplate" DataType="{x:Type m:Service}">
+        <StackPanel>
+            <Image Width="40" Source="{StaticResource ServicesImage}" />
+            <Label>Name</Label>
+            <TextBox Text="{Binding Name}" />
+            <Label>Duration</Label>
+            <TextBlock Text="{Binding Duration}" />
+        </StackPanel>
+    </DataTemplate>
+
 
     <DataTemplate x:Key="ProductTemplate" DataType="{x:Type m:Product}">
 
