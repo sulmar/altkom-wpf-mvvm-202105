@@ -23,20 +23,32 @@ namespace Altkom.Shop.WpfClient
         public ViewModelLocator()
         {
             ContainerBuilder containerBuilder = new ContainerBuilder();
-            containerBuilder.RegisterType<FakeCustomerService>().As<ICustomerService>();
+
+            containerBuilder.RegisterType<FakeCustomerService>().As<ICustomerService>().SingleInstance();
             containerBuilder.RegisterType<CustomerFaker>().As<Faker<Customer>>();
-            containerBuilder.RegisterType<CustomersViewModel>();
+            // containerBuilder.RegisterType<CustomersViewModel>();
+
             containerBuilder.Register(p => new FakeCustomerServiceOptions { Quantity = 5 });
+
+            containerBuilder.RegisterType<FakeProductService>().As<IProductService>();
+            containerBuilder.RegisterType<ProductFaker>().As<Faker<Product>>();
+            // containerBuilder.RegisterType<ProductsViewModel>();
+
+            // containerBuilder.RegisterType<ShellViewModel>();
+
+            // Automatyzacja rejestracji
+            containerBuilder.RegisterAssemblyTypes(typeof(BaseViewModel).Assembly) 
+                .Where(t => t.IsSubclassOf(typeof(BaseViewModel))); // Zarejestruj wszystkie klasy, które dziedziczą po BaseViewModel
+
 
             container = containerBuilder.Build();
         }
 
         // public CustomersViewModel CustomersViewModel => new CustomersViewModel(new FakeCustomerService(new CustomerFaker()));
+        // public ProductsViewModel ProductsViewModel => new ProductsViewModel(new FakeProductService(new ProductFaker()));
 
         public CustomersViewModel CustomersViewModel => container.Resolve<CustomersViewModel>();
-
-        public ProductsViewModel ProductsViewModel => new ProductsViewModel(new FakeProductService(new ProductFaker()));
-
-        public ShellViewModel ShellViewModel => new ShellViewModel();
+        public ProductsViewModel ProductsViewModel => container.Resolve<ProductsViewModel>();
+        public ShellViewModel ShellViewModel => container.Resolve<ShellViewModel>();
     }
 }
