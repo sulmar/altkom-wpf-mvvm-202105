@@ -25,7 +25,8 @@
 
         <ListBox
             Margin="5"
-            DisplayMemberPath="Name"
+            HorizontalContentAlignment="Stretch"
+            ItemTemplate="{StaticResource ProductTemplate}"
             ItemsSource="{Binding Products}"
             SelectedItem="{Binding SelectedProduct}"
             Template="{StaticResource RounderListBoxTemplate}" />

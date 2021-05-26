@@ -41,4 +41,40 @@
 
     </DataTemplate>
 
+
+    <DataTemplate x:Key="ProductTemplate" DataType="{x:Type m:Product}">
+
+        <DockPanel Margin="10">
+
+            <DockPanel.Resources>
+                <Style TargetType="TextBlock">
+                    <Setter Property="VerticalAlignment" Value="Center" />
+                    <Setter Property="FontSize" Value="16" />
+                    <Setter Property="Margin" Value="5" />
+                </Style>
+            </DockPanel.Resources>
+
+            <Border Background="BlueViolet">
+
+                <Image Width="50" Source="{StaticResource ProductsImage}" />
+
+                <Border.Clip>
+
+                    <RectangleGeometry
+                        RadiusX="25"
+                        RadiusY="25"
+                        Rect="0,0,50,50" />
+
+                </Border.Clip>
+
+            </Border>
+
+            <TextBlock Text="{Binding Name}" />
+
+            <TextBlock HorizontalAlignment="Right" Text="{Binding UnitPrice, StringFormat={}{0:C2}}" />
+        </DockPanel>
+
+    </DataTemplate>
+
+
 </ResourceDictionary>

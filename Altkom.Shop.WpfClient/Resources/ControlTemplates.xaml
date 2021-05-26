@@ -21,7 +21,12 @@
             BorderThickness="{TemplateBinding BorderThickness}"
             CornerRadius="5">
 
-            <ItemsPresenter />
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+
+                <ItemsPresenter />
+            </ScrollViewer>
+
+
 
         </Border>
     </ControlTemplate>
