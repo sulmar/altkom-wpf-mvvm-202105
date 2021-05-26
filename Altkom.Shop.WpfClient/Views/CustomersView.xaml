@@ -6,15 +6,16 @@
     xmlns:local="clr-namespace:Altkom.Shop.WpfClient.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="clr-namespace:Altkom.Shop.ViewModels;assembly=Altkom.Shop.ViewModels"
+    DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=CustomersViewModel}"
     Title="CustomersView"
     d:Background="White"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
 
-    <Page.DataContext>
+    <!--<Page.DataContext>
         <vm:CustomersViewModel />
-    </Page.DataContext>
+    </Page.DataContext>-->
 
     <Grid>
 

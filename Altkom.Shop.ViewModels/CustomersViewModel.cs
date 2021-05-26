@@ -1,5 +1,4 @@
-﻿using Altkom.Shop.FakeServices;
-using Altkom.Shop.IServices;
+﻿using Altkom.Shop.IServices;
 using Altkom.Shop.Models;
 using System;
 using System.Collections.Generic;
@@ -26,11 +25,6 @@ namespace Altkom.Shop.ViewModels
         private Customer selectedCustomer;
 
         public ICommand SendCommand { get; private set; }
-
-        public CustomersViewModel()
-            : this(new FakeCustomerService())
-        {
-        }
 
         public CustomersViewModel(ICustomerService customerService)
         {

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Altkom.Shop.FakeServices.Fakers
 {
-    class ProductFaker : Faker<Product>
+    public class ProductFaker : Faker<Product>
     {
         public ProductFaker()
         {

@@ -10,11 +10,8 @@
     Title="ShellView"
     Width="800"
     Height="650"
+    DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=ShellViewModel}"
     mc:Ignorable="d">
-
-    <Window.DataContext>
-        <vm:ShellViewModel />
-    </Window.DataContext>
 
     <Window.Resources>
 

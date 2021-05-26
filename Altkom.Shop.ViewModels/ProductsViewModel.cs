@@ -27,12 +27,6 @@ namespace Altkom.Shop.ViewModels
         private readonly IProductService productService;
         private Product selectedProduct;
 
-        public ProductsViewModel()
-            : this(new FakeProductService())
-        {
-
-        }
-
         public ProductsViewModel(IProductService productService)
         {
             this.productService = productService;
