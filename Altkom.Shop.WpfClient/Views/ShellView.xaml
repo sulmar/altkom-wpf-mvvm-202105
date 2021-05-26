@@ -94,25 +94,15 @@
 
         <StackPanel Grid.Column="1" Orientation="Horizontal">
 
-            <Button
-                Width="50"
-                Height="50"
-                Template="{StaticResource RounderButtonTemplate}">
-                Help
-            </Button>
+            <Button>Help</Button>
 
-            <Button
-                Width="50"
-                Height="50"
-                Template="{StaticResource RounderButtonTemplate}">
+            <Button Content="Home" />
+
+            <Button>
                 About
             </Button>
 
-            <Button
-                Width="70"
-                Height="70"
-                Style="{StaticResource PrimaryButtonStyle}"
-                Template="{StaticResource RounderButtonTemplate}">
+            <Button Style="{StaticResource PrimaryButtonStyle}">
                 <Image Width="50" Source="{StaticResource CustomersImage}" />
             </Button>
         </StackPanel>

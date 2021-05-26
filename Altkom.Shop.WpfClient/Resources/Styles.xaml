@@ -6,8 +6,47 @@
     <Style x:Key="DefaultButtonStyle" TargetType="Button">
         <Setter Property="Background" Value="{StaticResource MyBackgroundBrush}" />
         <Setter Property="Foreground" Value="{StaticResource MyForegroundBrush}" />
-        <Setter Property="Height" Value="70" />
+
         <Setter Property="Margin" Value="5" />
+        <Setter Property="Width" Value="70" />
+        <Setter Property="Height" Value="70" />
+        <Setter Property="Template" Value="{StaticResource RounderButtonTemplate}" />
+
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect
+                    BlurRadius="5"
+                    Opacity="0.5"
+                    ShadowDepth="5"
+                    Color="Black" />
+            </Setter.Value>
+        </Setter>
+
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <!--<Setter Property="Background" Value="LightPink" />-->
+
+                <Setter Property="Opacity" Value="0.5" />
+            </Trigger>
+
+            <Trigger Property="IsPressed" Value="True">
+
+
+                <Setter Property="Effect">
+                    <Setter.Value>
+                        <DropShadowEffect
+                            BlurRadius="5"
+                            Opacity="0.5"
+                            ShadowDepth="1"
+                            Color="Black" />
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </Style.Triggers>
+
+
+
     </Style>
 
     <Style BasedOn="{StaticResource DefaultButtonStyle}" TargetType="Button" />
@@ -17,6 +56,8 @@
         BasedOn="{StaticResource DefaultButtonStyle}"
         TargetType="Button">
         <Setter Property="Background" Value="Green" />
+        <Setter Property="Width" Value="90" />
+        <Setter Property="Height" Value="90" />
     </Style>
 
 </ResourceDictionary>
