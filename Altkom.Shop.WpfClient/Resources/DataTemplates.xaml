@@ -54,9 +54,23 @@
                 </Style>
             </DockPanel.Resources>
 
-            <Border Background="BlueViolet">
+            <Border>
 
-                <Image Width="50" Source="{StaticResource ProductsImage}" />
+                <Image Width="50">
+                    <Image.Style>
+                        <Style TargetType="Image">
+
+                            <Setter Property="Source" Value="{StaticResource ProductsImage}" />
+
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsWooden}" Value="True">
+                                    <Setter Property="Source" Value="{StaticResource ServicesImage}" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+
+                </Image>
 
                 <Border.Clip>
 
@@ -67,11 +81,75 @@
 
                 </Border.Clip>
 
+                <Border.Style>
+                    <Style TargetType="Border">
+                        <Setter Property="Background" Value="BlueViolet" />
+
+                        <Style.Triggers>
+
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding IsWooden}" Value="True" />
+                                    <Condition Binding="{Binding IsOverLimit}" Value="True" />
+                                </MultiDataTrigger.Conditions>
+
+                                <Setter Property="Background" Value="PaleVioletRed" />
+
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Border.Style>
+
             </Border>
 
-            <TextBlock Text="{Binding Name}" />
+            <TextBlock Text="{Binding Name}">
 
-            <TextBlock HorizontalAlignment="Right" Text="{Binding UnitPrice, StringFormat={}{0:C2}}" />
+                <TextBlock.Style>
+
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Margin" Value="10" />
+                        <Setter Property="Foreground" Value="Black" />
+                        <Setter Property="VerticalAlignment" Value="Center" />
+                        <Setter Property="FontSize" Value="16" />
+
+                        <Style.Triggers>
+
+                            <DataTrigger Binding="{Binding WeightThreshold}" Value="{x:Static m:WeightThreshold.Light}">
+                                <Setter Property="Foreground" Value="DarkGreen" />
+                            </DataTrigger>
+
+                            <DataTrigger Binding="{Binding WeightThreshold}" Value="{x:Static m:WeightThreshold.Havy}">
+                                <Setter Property="Foreground" Value="DarkRed" />
+                            </DataTrigger>
+
+                            <DataTrigger Binding="{Binding WeightThreshold}" Value="{x:Static m:WeightThreshold.Standard}">
+                                <Setter Property="Foreground" Value="Black" />
+                            </DataTrigger>
+
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+
+            </TextBlock>
+
+            <TextBlock HorizontalAlignment="Right" Text="{Binding UnitPrice, StringFormat={}{0:C2}}">
+
+                <TextBlock.Style>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Foreground" Value="Black" />
+                        <Setter Property="FontSize" Value="16" />
+
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsOverLimit}" Value="True">
+                                <Setter Property="Foreground" Value="red" />
+                                <Setter Property="FontWeight" Value="Bold" />
+                            </DataTrigger>
+                        </Style.Triggers>
+
+
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
         </DockPanel>
 
     </DataTemplate>
