@@ -13,7 +13,10 @@
 
     <Grid>
 
-        <TabControl ContentTemplate="{StaticResource ServiceTemplate}" ItemsSource="{Binding Services}">
+        <TabControl ContentTemplate="{StaticResource ServiceTemplate}" 
+                    ItemsSource="{Binding Services}"
+                    SelectedItem="{Binding SelectedService}"
+                    >
 
             <TabControl.ItemTemplate>
                 <DataTemplate>

@@ -2,20 +2,25 @@
     x:Class="Altkom.Shop.WpfClient.Views.CustomersView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:c="clr-namespace:Altkom.Shop.WpfClient.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:Altkom.Shop.WpfClient.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="clr-namespace:Altkom.Shop.ViewModels;assembly=Altkom.Shop.ViewModels"
-    DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=CustomersViewModel}"
     Title="CustomersView"
     d:Background="White"
-    d:DesignHeight="450"
+    d:DesignHeight="650"
     d:DesignWidth="800"
+    DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=CustomersViewModel}"
     mc:Ignorable="d">
 
     <!--<Page.DataContext>
         <vm:CustomersViewModel />
     </Page.DataContext>-->
+
+    <!--<Page.Resources>
+        <c:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+    </Page.Resources>-->
 
     <Grid>
 
@@ -70,7 +75,13 @@
                 </StackPanel>
             </GroupBox>
 
-            <Button Command="{Binding SendCommand}">Send</Button>
+            <CheckBox IsChecked="{Binding SelectedCustomer.IsRemoved}" />
+
+            <!--<Button Command="{Binding SendCommand}" Visibility="{Binding SelectedCustomer.IsRemoved, Converter={StaticResource BoolToVisibilityConverter}}">Send</Button>-->
+
+            <Button Command="{Binding SendCommand}" Visibility="{Binding SelectedCustomer.IsRemoved, Converter={c:BoolToVisibilityConverter}}">Send</Button>
+            
+            
 
 
 
