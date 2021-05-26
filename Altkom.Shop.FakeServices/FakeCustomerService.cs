@@ -7,11 +7,17 @@ using System.Linq;
 namespace Altkom.Shop.FakeServices
 {
 
+    public class FakeCustomerServiceOptions
+    {
+        public int Quantity { get; set; }
+    }
+
     public class FakeCustomerService : FakeEntityService<Customer>, ICustomerService
     {
 
-        public FakeCustomerService(Faker<Customer> faker) : base(faker)
+        public FakeCustomerService(Faker<Customer> faker, FakeCustomerServiceOptions options) : base(faker)
         {
+            
         }
     }
 }

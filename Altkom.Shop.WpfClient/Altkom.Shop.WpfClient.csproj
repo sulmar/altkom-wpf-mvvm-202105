@@ -15,6 +15,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Autofac" Version="6.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Altkom.Shop.ViewModels\Altkom.Shop.ViewModels.csproj" />
   </ItemGroup>
 
