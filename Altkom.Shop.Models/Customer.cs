@@ -3,6 +3,37 @@ using System.ComponentModel;
 
 namespace Altkom.Shop.Models
 {
+    public class Caretaker
+    {
+        public static void Clone(ref Customer memento, Customer customer )
+        {
+            customer = (Customer)memento.Clone();
+        }
+    }
+
+    // https://www.pluralsight.com/guides/property-copying-between-two-objects-using-reflection
+    public class PropertyCopier<TParent, TChild> where TParent : class
+                                            where TChild : class
+    {
+        public static void Copy(TParent parent, TChild child)
+        {
+            var parentProperties = parent.GetType().GetProperties();
+            var childProperties = child.GetType().GetProperties();
+
+            foreach (var parentProperty in parentProperties)
+            {
+                foreach (var childProperty in childProperties)
+                {
+                    if (parentProperty.Name == childProperty.Name && parentProperty.PropertyType == childProperty.PropertyType && childProperty.CanWrite)
+                    {
+                        childProperty.SetValue(child, parentProperty.GetValue(parent));
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
     public class Customer : BaseEntity, IEditableObject, ICloneable
     {
         //private string firstName;
@@ -56,18 +87,24 @@ namespace Altkom.Shop.Models
 
         public void BeginEdit()
         {
-            memento = (Customer) this.Clone();
+            memento = (Customer)this.Clone();
+
+            this.ResetDirty();
         }
 
         public void CancelEdit()
         {
-            this.FirstName = memento.FirstName;
-            this.LastName = memento.LastName;
-            this.Email = memento.Email;
-            this.InvoiceAddress = memento.InvoiceAddress;
-            this.ShipAddress = memento.ShipAddress;
+            //this.FirstName = memento.FirstName;
+            //this.LastName = memento.LastName;
+            //this.Email = memento.Email;
+            //this.InvoiceAddress = memento.InvoiceAddress;
+            //this.ShipAddress = memento.ShipAddress;
 
             // można zautomatyzować za pomocą Reflection
+
+            PropertyCopier<Customer, Customer>.Copy(memento, this);
+
+            this.ResetDirty();
         }
 
         public void EndEdit()
@@ -81,9 +118,9 @@ namespace Altkom.Shop.Models
         public object Clone()
         {
             // głęboka kopia
-            Customer clone = (Customer) this.MemberwiseClone();
-            clone.InvoiceAddress = (Address) this.InvoiceAddress.Clone();
-            clone.ShipAddress = (Address) this.ShipAddress.Clone();
+            Customer clone = (Customer)this.MemberwiseClone();
+            clone.InvoiceAddress = (Address)this.InvoiceAddress.Clone();
+            clone.ShipAddress = (Address)this.ShipAddress.Clone();
 
             return clone;
 
