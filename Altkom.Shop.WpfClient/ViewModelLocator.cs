@@ -26,6 +26,8 @@ namespace Altkom.Shop.WpfClient
 
             containerBuilder.RegisterType<FakeCustomerService>().As<ICustomerService>().SingleInstance();
             containerBuilder.RegisterType<CustomerFaker>().As<Faker<Customer>>();
+            containerBuilder.RegisterType<AddressFaker>().As<Faker<Address>>();
+
             // containerBuilder.RegisterType<CustomersViewModel>();
 
             containerBuilder.Register(p => new FakeCustomerServiceOptions { Quantity = 5 });
