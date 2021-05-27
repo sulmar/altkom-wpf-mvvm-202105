@@ -7,6 +7,17 @@
         public byte[] Photo { get; set; }
         public bool IsOverLimit => UnitPrice > 500;
 
+        public Product()
+        {
+            this.PropertyChanged += (s, e) =>
+            {
+                if (e.PropertyName == nameof(UnitPrice))
+                {
+                    OnPropertyChanged(nameof(IsOverLimit));
+                }
+            };
+        }
+
         public WeightThreshold WeightThreshold
         {
             get

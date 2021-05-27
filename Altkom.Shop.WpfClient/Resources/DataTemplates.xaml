@@ -142,6 +142,9 @@
 
             </TextBlock>
 
+
+            <Button HorizontalAlignment="Right" Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Page}, Path=DataContext.DiscountCommand}" CommandParameter="{Binding}">Discount</Button>
+
             <TextBlock HorizontalAlignment="Right" Text="{Binding UnitPrice, StringFormat={}{0:C2}}">
 
                 <TextBlock.Style>

@@ -24,6 +24,7 @@ namespace Altkom.Shop.ViewModels
         }
 
         public ICommand SaveCommand { get; private set; }
+        public ICommand DiscountCommand { get; private set; }
 
         private readonly IProductService productService;
         private Product selectedProduct;
@@ -37,6 +38,7 @@ namespace Altkom.Shop.ViewModels
             Colors = Products.Select(p => p.Color).Distinct().ToList();
 
             SaveCommand = new DelegateCommand(Save, CanSave);
+            DiscountCommand = new DelegateCommand<Product>(Discount);
         }
 
         public void Save()
@@ -50,6 +52,11 @@ namespace Altkom.Shop.ViewModels
         public bool CanSave()
         {
             return true;
+        }
+
+        public void Discount(Product product)
+        {
+            product.UnitPrice -= product.UnitPrice * 0.1m;
         }
     }
 }

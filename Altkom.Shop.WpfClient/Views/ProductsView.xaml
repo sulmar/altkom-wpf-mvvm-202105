@@ -6,6 +6,7 @@
     xmlns:local="clr-namespace:Altkom.Shop.WpfClient.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="clr-namespace:Altkom.Shop.ViewModels;assembly=Altkom.Shop.ViewModels"
+    x:Name="productsView"
     Title="ProductsView"
     d:Background="White"
     d:DesignHeight="450"
@@ -28,6 +29,20 @@
             ItemsSource="{Binding Products}"
             SelectedItem="{Binding SelectedProduct}"
             Template="{StaticResource RounderListBoxTemplate}" />
+
+        <!--<ListBox
+            Margin="5"
+            HorizontalContentAlignment="Stretch"
+
+            ItemsSource="{Binding Products}"
+            SelectedItem="{Binding SelectedProduct}"
+            Template="{StaticResource RounderListBoxTemplate}" >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Button Command="{Binding ElementName=productsView, Path=DataContext.DiscountCommand }" />
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>-->
 
 
         <!--  Selected Product  -->
