@@ -92,7 +92,7 @@
                 TickFrequency="0.5"
                 Value="{Binding SelectedCustomer.CreditAmount, Mode=TwoWay}" />
 
-            <TextBox Text="{Binding SelectedCustomer.FullName}" />
+            <TextBox Text="{Binding SelectedCustomer.FullName, Mode=OneWay}" />
 
 
             <CheckBox IsChecked="{Binding SelectedCustomer.IsRemoved}">Is Removed</CheckBox>
