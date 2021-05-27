@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:Altkom.Shop.WpfClient.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:uc="clr-namespace:Altkom.Shop.WpfClient.UserControls"
     xmlns:vm="clr-namespace:Altkom.Shop.ViewModels;assembly=Altkom.Shop.ViewModels"
     Title="CustomersView"
     d:Background="White"
@@ -62,23 +63,11 @@
             <ComboBox ItemsSource="{Binding AddressFakers}" SelectedItem="{Binding SelectedAddressFaker}" />
 
             <GroupBox Header="Ship address">
-                <StackPanel>
-                    <Label>City</Label>
-                    <TextBox Text="{Binding SelectedCustomer.ShipAddress.City}" />
-
-                    <Label>Country</Label>
-                    <TextBox Text="{Binding SelectedCustomer.ShipAddress.Country}" />
-                </StackPanel>
+                <uc:AddressUserControl DataContext="{Binding SelectedCustomer.ShipAddress}" />
             </GroupBox>
 
             <GroupBox Header="Invoice address">
-                <StackPanel>
-                    <Label>City</Label>
-                    <TextBox Text="{Binding SelectedCustomer.InvoiceAddress.City}" />
-
-                    <Label>Country</Label>
-                    <TextBox Text="{Binding SelectedCustomer.InvoiceAddress.Country}" />
-                </StackPanel>
+                <uc:AddressUserControl DataContext="{Binding SelectedCustomer.InvoiceAddress}" />
             </GroupBox>
 
             <Label>Credit amount</Label>
