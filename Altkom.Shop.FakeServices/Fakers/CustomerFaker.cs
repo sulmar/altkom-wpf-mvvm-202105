@@ -26,8 +26,11 @@ namespace Altkom.Shop.FakeServices.Fakers
             RuleFor(p => p.CreditAmount, f => f.Random.Decimal(0, 1000));
             RuleFor(p => p.IsRemoved, f => f.Random.Bool(0.2f));
 
-            RuleFor(p => p.InvoiceAddress, f => addressFaker.Generate());
-            RuleFor(p => p.ShipAddress, f => addressFaker.Generate());
+            //RuleFor(p => p.InvoiceAddress, f => addressFaker.Generate());
+            //RuleFor(p => p.ShipAddress, f => addressFaker.Generate());
+
+            Ignore(p => p.InvoiceAddress);
+            Ignore(p => p.ShipAddress);
         }
     }
 }

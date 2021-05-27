@@ -58,6 +58,11 @@
             <Label>Email</Label>
             <TextBox Text="{Binding SelectedCustomer.Email}" />
 
+            <Label>Typ adresu</Label>
+            <ComboBox ItemsSource="{Binding AddressFakers}" 
+                      SelectedItem="{Binding SelectedAddressFaker}"
+                      />
+
             <GroupBox Header="Ship address">
                 <StackPanel>
                     <Label>City</Label>
@@ -78,7 +83,17 @@
                 </StackPanel>
             </GroupBox>
 
-            <CheckBox IsChecked="{Binding SelectedCustomer.IsRemoved}" />
+            <Label>Credit amount</Label>
+
+            <TextBox Text="{Binding SelectedCustomer.CreditAmount}" />
+
+            <Slider
+                Maximum="1000"
+                Minimum="0"
+                Value="{Binding SelectedCustomer.CreditAmount}" />
+
+
+            <CheckBox IsChecked="{Binding SelectedCustomer.IsRemoved}">Is Removed</CheckBox>
 
             <!--<Button Command="{Binding SendCommand}" Visibility="{Binding SelectedCustomer.IsRemoved, Converter={StaticResource BoolToVisibilityConverter}}">Send</Button>-->
 

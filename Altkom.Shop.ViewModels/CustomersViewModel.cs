@@ -1,5 +1,6 @@
 ﻿using Altkom.Shop.IServices;
 using Altkom.Shop.Models;
+using Bogus;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -23,12 +24,33 @@ namespace Altkom.Shop.ViewModels
 
         private readonly ICustomerService customerService;
         private Customer selectedCustomer;
+        
+
+        public IEnumerable<Faker<Address>> AddressFakers { get; private set; }
+
+        private Faker<Address> selectedAddressFaker;
+        public Faker<Address> SelectedAddressFaker 
+        { 
+            get => selectedAddressFaker; 
+            set 
+            {
+                selectedAddressFaker = value;
+                GenerateAddresses();
+            }
+        }
+
+        private void GenerateAddresses()
+        {
+            SelectedCustomer.ShipAddress = SelectedAddressFaker.Generate();
+            SelectedCustomer.InvoiceAddress = SelectedAddressFaker.Generate();
+        }
 
         public ICommand SendCommand { get; private set; }
 
-        public CustomersViewModel(ICustomerService customerService)
+        public CustomersViewModel(ICustomerService customerService, IEnumerable<Faker<Address>> addressFakers)
         {
             this.customerService = customerService;
+            this.AddressFakers = addressFakers;
 
             Customers = this.customerService.Get();
 

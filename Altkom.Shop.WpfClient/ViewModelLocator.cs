@@ -26,7 +26,9 @@ namespace Altkom.Shop.WpfClient
 
             containerBuilder.RegisterType<FakeCustomerService>().As<ICustomerService>().SingleInstance();
             containerBuilder.RegisterType<CustomerFaker>().As<Faker<Customer>>();
-            containerBuilder.RegisterType<AddressFaker>().As<Faker<Address>>();
+
+            containerBuilder.RegisterType<PolishAddressFaker>().As<Faker<Address>>();
+            containerBuilder.RegisterType<ForeignAddressFaker>().As<Faker<Address>>();
 
             // containerBuilder.RegisterType<CustomersViewModel>();
 
@@ -58,5 +60,9 @@ namespace Altkom.Shop.WpfClient
         public ProductsViewModel ProductsViewModel => container.Resolve<ProductsViewModel>();
         public ServicesViewModel ServicesViewModel => container.Resolve<ServicesViewModel>();
         public ShellViewModel ShellViewModel => container.Resolve<ShellViewModel>();
+
+        
+
+
     }
 }
