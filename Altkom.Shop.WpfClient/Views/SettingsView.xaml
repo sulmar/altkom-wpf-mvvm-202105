@@ -108,7 +108,14 @@
                                     Storyboard.TargetProperty="(Rectangle.RenderTransform).(RotateTransform.Angle)"
                                     From="0"
                                     To="360"
-                                    Duration="0:0:1" />
+                                    Duration="0:0:1" >
+
+                                    <DoubleAnimation.EasingFunction>
+                                        <BounceEase Bounces="2"
+                                                    EasingMode="EaseOut" Bounciness="2" />
+                                    </DoubleAnimation.EasingFunction> 
+
+                                </DoubleAnimation>
 
 
 
