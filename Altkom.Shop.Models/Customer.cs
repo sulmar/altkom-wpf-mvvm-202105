@@ -41,6 +41,14 @@ namespace Altkom.Shop.Models
         public Address ShipAddress { get; set; }
         public bool IsRemoved { get; set; }
 
+
+        public Customer()
+        {
+            InvoiceAddress = new Address();
+            ShipAddress = new Address();
+        }
+
+
     }
 
 }

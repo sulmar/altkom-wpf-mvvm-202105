@@ -47,6 +47,7 @@ namespace Altkom.Shop.WpfClient
             containerBuilder.RegisterAssemblyTypes(typeof(BaseViewModel).Assembly) 
                 .Where(t => t.IsSubclassOf(typeof(BaseViewModel))); // Zarejestruj wszystkie klasy, które dziedziczą po BaseViewModel
 
+            containerBuilder.RegisterType<WpfMessageBoxService>().As<IMesageBoxService>();
                 
 
 

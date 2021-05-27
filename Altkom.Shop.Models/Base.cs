@@ -12,6 +12,29 @@ namespace Altkom.Shop.Models
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        public bool IsDirty { get; set; }
+
+        // public event EventHandler IsDirtyChanged;
+
+        public Base()
+        {
+            EnableTracking();
+        }
+
+        private void EnableTracking()
+        {
+            PropertyChanged += (s, e) =>
+            {
+                if (e.PropertyName != nameof(IsDirty))
+                {
+                    IsDirty = true;
+                    // IsDirtyChanged?.Invoke(this, EventArgs.Empty);
+                }
+            };
+        }
+
+        public void ResetDirty() => IsDirty = false;
     }
 
 }

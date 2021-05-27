@@ -95,6 +95,10 @@
 
             <CheckBox IsChecked="{Binding SelectedCustomer.IsRemoved}">Is Removed</CheckBox>
 
+            <CheckBox 
+                IsChecked="{Binding SelectedCustomer.IsDirty, Mode=OneWay}"                
+                >Is Dirty</CheckBox>
+
             <!--<Button Command="{Binding SendCommand}" Visibility="{Binding SelectedCustomer.IsRemoved, Converter={StaticResource BoolToVisibilityConverter}}">Send</Button>-->
 
             <Button Command="{Binding SendCommand}" Visibility="{Binding SelectedCustomer.IsRemoved, Converter={c:BoolToVisibilityConverter}}">Send</Button>

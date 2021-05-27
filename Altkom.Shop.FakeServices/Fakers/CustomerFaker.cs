@@ -31,6 +31,12 @@ namespace Altkom.Shop.FakeServices.Fakers
 
             Ignore(p => p.InvoiceAddress);
             Ignore(p => p.ShipAddress);
+
+            Ignore(p => p.IsDirty);
+
+            FinishWith((f, c) => c.ResetDirty());
+
+            
         }
     }
 }

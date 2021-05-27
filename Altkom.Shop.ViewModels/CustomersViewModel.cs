@@ -15,14 +15,35 @@ namespace Altkom.Shop.ViewModels
 
         public Customer SelectedCustomer
         {
-            get => selectedCustomer; set
+            get => selectedCustomer; 
+            set
             {
+                if (selectedCustomer != null && (selectedCustomer.IsDirty || selectedCustomer.InvoiceAddress.IsDirty || selectedCustomer.ShipAddress.IsDirty))
+                {
+                    bool result = mesageBoxService.ShowDialog("Customer", "Would you save changes?");
+
+                    if (result)
+                    {
+                        // TODO: save
+                    }
+                    else
+                    {
+
+                        // TODO: undo                    
+                    }
+                    
+                    
+                }
+
                 selectedCustomer = value;
+
+
                 OnPropertyChanged();
             }
         }
 
         private readonly ICustomerService customerService;
+        private readonly IMesageBoxService mesageBoxService;
         private Customer selectedCustomer;
         
 
@@ -47,11 +68,11 @@ namespace Altkom.Shop.ViewModels
 
         public ICommand SendCommand { get; private set; }
 
-        public CustomersViewModel(ICustomerService customerService, IEnumerable<Faker<Address>> addressFakers)
+        public CustomersViewModel(ICustomerService customerService, IEnumerable<Faker<Address>> addressFakers, IMesageBoxService mesageBoxService)
         {
             this.customerService = customerService;
             this.AddressFakers = addressFakers;
-
+            this.mesageBoxService = mesageBoxService;
             Customers = this.customerService.Get();
 
             SendCommand = new DelegateCommand(Send);
