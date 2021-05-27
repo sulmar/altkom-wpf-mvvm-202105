@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Altkom.Shop.IServices", "Al
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Altkom.Shop.FakeServices", "Altkom.Shop.FakeServices\Altkom.Shop.FakeServices.csproj", "{CE4711E0-13BB-4FAD-B439-F837DE7901FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altkom.Shop.ConsoleClient", "Altkom.Shop.ConsoleClient\Altkom.Shop.ConsoleClient.csproj", "{390C036C-43C0-41FB-9E80-86878EE072A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Altkom.Shop.ConsoleClient", "Altkom.Shop.ConsoleClient\Altkom.Shop.ConsoleClient.csproj", "{390C036C-43C0-41FB-9E80-86878EE072A3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

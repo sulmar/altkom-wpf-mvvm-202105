@@ -17,6 +17,7 @@ namespace Altkom.Shop.FakeServices.Fakers
             RuleFor(p => p.Name, f => f.Hacker.IngVerb());
             RuleFor(p => p.Duration, f => TimeSpan.FromMinutes(f.Random.Double(1, 120)));
             RuleFor(p => p.UnitPrice, f => Math.Round(f.Random.Decimal(50, 200), 0));
+            Ignore(p => p.IsDirty);
         }
     }
 }
