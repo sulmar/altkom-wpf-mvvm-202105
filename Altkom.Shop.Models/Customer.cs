@@ -64,6 +64,8 @@ namespace Altkom.Shop.Models
             this.FirstName = memento.FirstName;
             this.LastName = memento.LastName;
             this.Email = memento.Email;
+            this.InvoiceAddress = memento.InvoiceAddress;
+            this.ShipAddress = memento.ShipAddress;
 
             // można zautomatyzować za pomocą Reflection
         }
@@ -78,7 +80,17 @@ namespace Altkom.Shop.Models
 
         public object Clone()
         {
-            return this.MemberwiseClone();  // Płytka kopia (shallow copy)
+            // głęboka kopia
+            Customer clone = (Customer) this.MemberwiseClone();
+            clone.InvoiceAddress = (Address) this.InvoiceAddress.Clone();
+            clone.ShipAddress = (Address) this.ShipAddress.Clone();
+
+            return clone;
+
+            // FastDeepCloner
+            // https://github.com/AlenToma/FastDeepCloner
+
+            // return this.MemberwiseClone();  // Płytka kopia (shallow copy)
         }
 
         #endregion
