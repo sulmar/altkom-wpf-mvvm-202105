@@ -50,18 +50,16 @@
             <TextBlock Text="{Binding SelectedCustomer.FullName}" />
 
             <Label>First name</Label>
-            <TextBox Text="{Binding SelectedCustomer.FirstName}" />
+            <TextBox Text="{Binding SelectedCustomer.FirstName, UpdateSourceTrigger=PropertyChanged}" />
 
             <Label>Last name</Label>
-            <TextBox Text="{Binding SelectedCustomer.LastName}" />
+            <TextBox Text="{Binding SelectedCustomer.LastName, UpdateSourceTrigger=PropertyChanged}" />
 
             <Label>Email</Label>
-            <TextBox Text="{Binding SelectedCustomer.Email}" />
+            <TextBox Text="{Binding SelectedCustomer.Email, UpdateSourceTrigger=Explicit}" />
 
             <Label>Typ adresu</Label>
-            <ComboBox ItemsSource="{Binding AddressFakers}" 
-                      SelectedItem="{Binding SelectedAddressFaker}"
-                      />
+            <ComboBox ItemsSource="{Binding AddressFakers}" SelectedItem="{Binding SelectedAddressFaker}" />
 
             <GroupBox Header="Ship address">
                 <StackPanel>
@@ -85,19 +83,21 @@
 
             <Label>Credit amount</Label>
 
-            <TextBox Text="{Binding SelectedCustomer.CreditAmount}" />
+            <TextBox Text="{Binding SelectedCustomer.CreditAmount, UpdateSourceTrigger=PropertyChanged}" />
 
             <Slider
+                IsSnapToTickEnabled="True"
                 Maximum="1000"
                 Minimum="0"
-                Value="{Binding SelectedCustomer.CreditAmount}" />
+                TickFrequency="0.5"
+                Value="{Binding SelectedCustomer.CreditAmount, Mode=TwoWay}" />
+
+            <TextBox Text="{Binding SelectedCustomer.FullName}" />
 
 
             <CheckBox IsChecked="{Binding SelectedCustomer.IsRemoved}">Is Removed</CheckBox>
 
-            <CheckBox 
-                IsChecked="{Binding SelectedCustomer.IsDirty, Mode=OneWay}"                
-                >Is Dirty</CheckBox>
+            <CheckBox IsChecked="{Binding SelectedCustomer.IsDirty, Mode=OneWay}">Is Dirty</CheckBox>
 
             <!--<Button Command="{Binding SendCommand}" Visibility="{Binding SelectedCustomer.IsRemoved, Converter={StaticResource BoolToVisibilityConverter}}">Send</Button>-->
 
