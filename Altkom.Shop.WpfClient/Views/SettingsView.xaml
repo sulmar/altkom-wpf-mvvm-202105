@@ -10,6 +10,19 @@
     d:DesignWidth="800"
     mc:Ignorable="d">
 
+    <Page.Resources>
+
+        <Storyboard x:Key="MyStoryboad">
+            <DoubleAnimation
+                Storyboard.TargetName="MyRectangle"
+                Storyboard.TargetProperty="Width"
+                From="0"
+                To="500"
+                Duration="0:0:1.500" />
+        </Storyboard>
+
+    </Page.Resources>
+
     <Grid>
 
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
@@ -59,6 +72,68 @@
 
 
                 </Rectangle.RenderTransform>
+
+            </Rectangle>
+
+            <Rectangle
+                x:Name="MyRectangle"
+                Width="150"
+                Height="150"
+                Fill="DarkMagenta"
+                RenderTransformOrigin="0.5, 0.5">
+
+                <Rectangle.RenderTransform>
+                    <RotateTransform />
+                </Rectangle.RenderTransform>
+
+                <Rectangle.Triggers>
+
+                    <EventTrigger RoutedEvent="Rectangle.Loaded">
+
+                        <BeginStoryboard Storyboard="{StaticResource MyStoryboad}" />
+
+
+
+
+                    </EventTrigger>
+
+                    <EventTrigger RoutedEvent="MouseEnter">
+
+                        <BeginStoryboard>
+                            <Storyboard>
+
+                                <DoubleAnimation
+                                    RepeatBehavior="Forever"
+                                    Storyboard.TargetName="MyRectangle"
+                                    Storyboard.TargetProperty="(Rectangle.RenderTransform).(RotateTransform.Angle)"
+                                    From="0"
+                                    To="360"
+                                    Duration="0:0:1" />
+
+
+
+                                <DoubleAnimation
+                                    AutoReverse="True"
+                                    RepeatBehavior="Forever"
+                                    Storyboard.TargetName="MyRectangle"
+                                    Storyboard.TargetProperty="Height"
+                                    From="0"
+                                    To="300"
+                                    Duration="0:0:3" />
+
+                                <ColorAnimation
+                                    AutoReverse="True"
+                                    RepeatBehavior="Forever"
+                                    Storyboard.TargetName="MyRectangle"
+                                    Storyboard.TargetProperty="(Rectangle.Fill).(SolidColorBrush.Color)"
+                                    From="Purple"
+                                    To="LightBlue"
+                                    Duration="0:0:2" />
+
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Rectangle.Triggers>
 
             </Rectangle>
 
