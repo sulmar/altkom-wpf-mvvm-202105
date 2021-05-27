@@ -42,6 +42,16 @@
                             Color="Black" />
                     </Setter.Value>
                 </Setter>
+
+                <Setter Property="RenderTransform">
+                    <Setter.Value>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="0.99" ScaleY="0.99" />
+                            <TranslateTransform X="-0.1" Y="-0.1" />
+
+                        </TransformGroup>
+                    </Setter.Value>
+                </Setter>
             </Trigger>
         </Style.Triggers>
 

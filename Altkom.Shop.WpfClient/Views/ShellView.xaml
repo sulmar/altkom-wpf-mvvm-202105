@@ -80,7 +80,11 @@
                 </DockPanel>
             </Button>
 
-            <Button HorizontalContentAlignment="Left" BorderBrush="Transparent">
+            <Button
+                HorizontalContentAlignment="Left"
+                BorderBrush="Transparent"
+                Command="{Binding ShowViewCommand}"
+                CommandParameter="SettingsView.xaml">
                 <DockPanel>
                     <Image Width="50" Source="{StaticResource SettingsImage}" />
                     <TextBlock VerticalAlignment="Center" FontSize="18">Settings</TextBlock>
