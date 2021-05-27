@@ -32,6 +32,7 @@ namespace Altkom.Shop.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string FullName => $"{FirstName} {LastName}";
+        public string Email { get; set; }
         public CustomerType CustomerType { get; set; }
         public string Avatar { get; set; }
         public DateTime DateOfBirth { get; set; }

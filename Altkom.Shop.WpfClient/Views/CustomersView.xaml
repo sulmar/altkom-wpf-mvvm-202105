@@ -55,6 +55,9 @@
             <Label>Last name</Label>
             <TextBox Text="{Binding SelectedCustomer.LastName}" />
 
+            <Label>Email</Label>
+            <TextBox Text="{Binding SelectedCustomer.Email}" />
+
             <GroupBox Header="Ship address">
                 <StackPanel>
                     <Label>City</Label>
@@ -80,8 +83,8 @@
             <!--<Button Command="{Binding SendCommand}" Visibility="{Binding SelectedCustomer.IsRemoved, Converter={StaticResource BoolToVisibilityConverter}}">Send</Button>-->
 
             <Button Command="{Binding SendCommand}" Visibility="{Binding SelectedCustomer.IsRemoved, Converter={c:BoolToVisibilityConverter}}">Send</Button>
-            
-            
+
+
 
 
 

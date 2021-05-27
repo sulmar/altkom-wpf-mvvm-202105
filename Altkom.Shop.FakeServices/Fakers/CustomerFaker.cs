@@ -19,6 +19,7 @@ namespace Altkom.Shop.FakeServices.Fakers
             RuleFor(p => p.Id, f => f.IndexFaker);
             RuleFor(p => p.FirstName, f => f.Person.FirstName);
             RuleFor(p => p.LastName, f => f.Person.LastName);
+            RuleFor(p => p.Email, (f, customer) => $"{customer.FirstName}.{customer.LastName}@domain.com"); // firstname.lastname@domain.com
             RuleFor(p => p.CustomerType, f => f.PickRandom<CustomerType>());
             RuleFor(p => p.Avatar, f => f.Person.Avatar);
             RuleFor(p => p.DateOfBirth, f => f.Person.DateOfBirth);
