@@ -1,8 +1,9 @@
 ﻿using System;
+using System.ComponentModel;
 
 namespace Altkom.Shop.Models
 {
-    public class Customer : BaseEntity
+    public class Customer : BaseEntity, IEditableObject, ICloneable
     {
         //private string firstName;
         //private string lastName;
@@ -48,6 +49,39 @@ namespace Altkom.Shop.Models
             ShipAddress = new Address();
         }
 
+
+        #region IEditableObject
+
+        private Customer memento;
+
+        public void BeginEdit()
+        {
+            memento = (Customer) this.Clone();
+        }
+
+        public void CancelEdit()
+        {
+            this.FirstName = memento.FirstName;
+            this.LastName = memento.LastName;
+            this.Email = memento.Email;
+
+            // można zautomatyzować za pomocą Reflection
+        }
+
+        public void EndEdit()
+        {
+            memento = null;
+        }
+        #endregion
+
+        #region IClonable
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();  // Płytka kopia (shallow copy)
+        }
+
+        #endregion
 
     }
 

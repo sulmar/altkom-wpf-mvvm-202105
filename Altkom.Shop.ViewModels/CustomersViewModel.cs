@@ -24,21 +24,27 @@ namespace Altkom.Shop.ViewModels
 
                     if (result)
                     {
-                        // TODO: save
+                        SelectedCustomer.EndEdit();
+
+                        customerService.Update(SelectedCustomer);
+
+                        SelectedCustomer.ResetDirty();
+
                     }
                     else
                     {
+                        SelectedCustomer.CancelEdit();
 
-                        // TODO: undo                    
+                        SelectedCustomer.ResetDirty();
                     }
-                    
-                    
                 }
 
                 selectedCustomer = value;
 
 
                 OnPropertyChanged();
+
+                SelectedCustomer.BeginEdit();
             }
         }
 
