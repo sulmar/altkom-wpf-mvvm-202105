@@ -8,6 +8,7 @@
     xmlns:local="clr-namespace:Altkom.Shop.WpfClient.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="clr-namespace:Altkom.Shop.ViewModels;assembly=Altkom.Shop.ViewModels"
+    xmlns:me="clr-namespace:Altkom.Shop.WpfClient.MarkupExtensions"
     x:Name="productsView"
     Title="ProductsView"
     d:Background="White"
@@ -94,7 +95,9 @@
             <StackPanel Orientation="Horizontal">
 
                 <Button Command="{Binding SaveCommand}">Save</Button>
-                <Button Command="{Binding CalculateCommand}" Style="{StaticResource PrimaryButtonStyle}">Calculate</Button>
+                <Button Command="{Binding CalculateCommand}"
+                        MouseEnter="{me:MouseEnterMarkup Offset=5}"
+                        Style="{StaticResource PrimaryButtonStyle}">Calculate</Button>
 
                 <Button Command="{Binding CancelCalculateCommand}">Cancel</Button>
 

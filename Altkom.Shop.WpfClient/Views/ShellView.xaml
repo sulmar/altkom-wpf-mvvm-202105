@@ -8,6 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:vm="clr-namespace:Altkom.Shop.ViewModels;assembly=Altkom.Shop.ViewModels"
+    xmlns:me="clr-namespace:Altkom.Shop.WpfClient.MarkupExtensions"
     Title="ShellView"
     Width="800"
     Height="650"
@@ -136,6 +137,8 @@
 
             <StatusBarItem>wersja 1.0</StatusBarItem>
             <StatusBarItem>John Smith</StatusBarItem>
+            
+            <StatusBarItem Content="{me:CurrentFolderMarkup}" />
 
         </StatusBar>
 
