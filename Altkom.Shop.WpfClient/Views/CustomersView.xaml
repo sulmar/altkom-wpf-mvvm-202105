@@ -94,7 +94,7 @@
 
             <Button
                 Command="{Binding SendCommand}"
-                Content="Send"
+                Content="Send"                
                 Visibility="{Binding SelectedCustomer.IsRemoved, Converter={c:BoolToVisibilityConverter}}">
 
                 <i:Interaction.Behaviors>

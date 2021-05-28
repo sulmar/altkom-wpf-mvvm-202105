@@ -3,15 +3,24 @@
 
     <ControlTemplate x:Key="RounderButtonTemplate" TargetType="Button">
 
-        <Border
+        <Border x:Name="MyBorder"
             Background="{TemplateBinding Background}"
             BorderBrush="{TemplateBinding BorderBrush}"
             BorderThickness="{TemplateBinding BorderThickness}"
-            CornerRadius="90">
+            CornerRadius="90"
+            
+            >
 
             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+            
 
         </Border>
+
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter TargetName="MyBorder" Property="Background" Value="Gray" />
+            </Trigger>
+        </ControlTemplate.Triggers>
 
     </ControlTemplate>
 
@@ -30,5 +39,7 @@
 
         </Border>
     </ControlTemplate>
+    
+    
 
 </ResourceDictionary>

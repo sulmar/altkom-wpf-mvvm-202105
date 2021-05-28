@@ -45,6 +45,20 @@ namespace Altkom.Shop.ViewModels
             this.canExecute = canExecute;
         }
 
+        /* 
+            public event EventHandler CanExecuteChanged
+            {
+                add { CommandManager.RequerySuggested += value; }
+                remove { CommandManager.RequerySuggested -= value; }
+            }
+        */
+
+        public void OnCanExecuteChanged()
+        {
+            CanExecuteChanged?.Invoke(this, EventArgs.Empty);
+        }
+
+
         public bool CanExecute(object parameter)
         {
             return canExecute == null || canExecute();
