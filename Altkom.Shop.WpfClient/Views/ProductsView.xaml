@@ -61,7 +61,30 @@
             <Label>Color</Label>
             <ComboBox ItemsSource="{Binding Colors}" />
 
-            <Button Command="{Binding SaveCommand}">Save</Button>
+
+            <StackPanel Orientation="Horizontal">
+
+                <Button Command="{Binding SaveCommand}">Save</Button>
+                <Button Command="{Binding CalculateCommand}" Style="{StaticResource PrimaryButtonStyle}">Calculate</Button>
+
+                <ProgressBar
+                    Width="200"
+                    Height="20"
+                    Margin="10"
+                    d:Value="4"
+                    Maximum="{Binding Products.Count}"
+                    Minimum="0"
+                    Value="{Binding Counter}" />
+
+                <TextBlock
+                    Margin="10"
+                    VerticalAlignment="Center"
+                    d:Text="100"
+                    FontSize="40"
+                    Text="{Binding TotalAmount}" />
+
+            </StackPanel>
+
 
 
 

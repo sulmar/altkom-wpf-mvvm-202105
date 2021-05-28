@@ -34,7 +34,7 @@ namespace Altkom.Shop.ViewModels
 
         private void ShowProductsView()
         {
-            SelectedViewModel = new ProductsViewModel(new FakeProductService(new ProductFaker()));
+            SelectedViewModel = new ProductsViewModel(new FakeProductService(new ProductFaker()), new FakeProductCalculatorService());
         }
 
         private void ShowServicesView()

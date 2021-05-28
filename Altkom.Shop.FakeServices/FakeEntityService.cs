@@ -4,6 +4,7 @@ using Bogus;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 
 namespace Altkom.Shop.FakeServices
 {
@@ -11,6 +12,8 @@ namespace Altkom.Shop.FakeServices
         where TEntity : BaseEntity
     {
         protected ICollection<TEntity> entities;
+
+        readonly TimeSpan interval = TimeSpan.FromSeconds(5);
 
         public FakeEntityService(Faker<TEntity> faker)
         {
@@ -27,6 +30,8 @@ namespace Altkom.Shop.FakeServices
 
         public IEnumerable<TEntity> Get()
         {
+            // Thread.Sleep(interval);
+
             return entities;
         }
 
