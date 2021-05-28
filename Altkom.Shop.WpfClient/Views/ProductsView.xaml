@@ -7,8 +7,8 @@
     xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:local="clr-namespace:Altkom.Shop.WpfClient.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:vm="clr-namespace:Altkom.Shop.ViewModels;assembly=Altkom.Shop.ViewModels"
     xmlns:me="clr-namespace:Altkom.Shop.WpfClient.MarkupExtensions"
+    xmlns:vm="clr-namespace:Altkom.Shop.ViewModels;assembly=Altkom.Shop.ViewModels"
     x:Name="productsView"
     Title="ProductsView"
     d:Background="White"
@@ -33,30 +33,72 @@
 
         <Grid>
 
-            <ListBox
-                Margin="5"
-                HorizontalContentAlignment="Stretch"
-                ItemTemplate="{StaticResource ProductTemplate}"
-                ItemsSource="{Binding Products}"
-                SelectedItem="{Binding SelectedProduct}"
-                Template="{StaticResource RounderListBoxTemplate}" />
+            <DockPanel>
 
-            <ProgressBar
-                Width="100"
-                Height="20"
-                IsIndeterminate="True">
+                <!--  Panel Search  -->
+                <StackPanel DockPanel.Dock="Top">
 
-                <ProgressBar.Style>
-                    <Style TargetType="ProgressBar">
-                        <Setter Property="Visibility" Value="Hidden" />
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding IsLoading}" Value="True">
-                                <Setter Property="Visibility" Value="Visible" />
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </ProgressBar.Style>
-            </ProgressBar>
+                    <StackPanel.Resources>
+
+                        <Style TargetType="Label">
+                            <Setter Property="Width" Value="70" />
+                        </Style>
+
+                        <Style TargetType="TextBox">
+                            <Setter Property="VerticalAlignment" Value="Center" />
+                            <Setter Property="Width" Value="100" />
+                            <Setter Property="Margin" Value="5" />
+                        </Style>
+                    </StackPanel.Resources>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label>Unit Price</Label>
+                        <TextBox Text="100" />
+                        <TextBox Text="200" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label>Weight</Label>
+                        <TextBox Text="100" />
+                        <TextBox Text="200" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label>Color</Label>
+                        <ComboBox Width="210" ItemsSource="{Binding Colors}" />
+                    </StackPanel>
+
+
+                </StackPanel>
+
+                <!--  Products  -->
+
+                <ListBox
+                    Margin="5"
+                    HorizontalContentAlignment="Stretch"
+                    ItemTemplate="{StaticResource ProductTemplate}"
+                    ItemsSource="{Binding Products}"
+                    SelectedItem="{Binding SelectedProduct}"
+                    Template="{StaticResource RounderListBoxTemplate}" />
+
+                <ProgressBar
+                    Width="100"
+                    Height="20"
+                    IsIndeterminate="True">
+
+                    <ProgressBar.Style>
+                        <Style TargetType="ProgressBar">
+                            <Setter Property="Visibility" Value="Hidden" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsLoading}" Value="True">
+                                    <Setter Property="Visibility" Value="Visible" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ProgressBar.Style>
+                </ProgressBar>
+
+            </DockPanel>
 
         </Grid>
 
@@ -95,9 +137,12 @@
             <StackPanel Orientation="Horizontal">
 
                 <Button Command="{Binding SaveCommand}">Save</Button>
-                <Button Command="{Binding CalculateCommand}"
-                        MouseEnter="{me:MouseEnterMarkup Offset=5}"
-                        Style="{StaticResource PrimaryButtonStyle}">Calculate</Button>
+                <Button
+                    Command="{Binding CalculateCommand}"
+                    MouseEnter="{me:MouseEnterMarkup Offset=5}"
+                    Style="{StaticResource PrimaryButtonStyle}">
+                    Calculate
+                </Button>
 
                 <Button Command="{Binding CancelCalculateCommand}">Cancel</Button>
 
