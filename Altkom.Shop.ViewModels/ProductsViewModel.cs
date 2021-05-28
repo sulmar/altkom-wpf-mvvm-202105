@@ -4,6 +4,7 @@ using Altkom.Shop.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Windows.Input;
 
 namespace Altkom.Shop.ViewModels
@@ -40,6 +41,7 @@ namespace Altkom.Shop.ViewModels
         public ICommand SaveCommand { get; private set; }
         public ICommand DiscountCommand { get; private set; }
         public ICommand CalculateCommand { get; private set; }
+        public ICommand CancelCalculateCommand { get; private set; }
 
         #endregion
 
@@ -61,8 +63,7 @@ namespace Altkom.Shop.ViewModels
             SaveCommand = new DelegateCommand(Save, CanSave);
             DiscountCommand = new DelegateCommand<Product>(Discount);
             CalculateCommand = new DelegateCommand(Calculate);
-
-           
+            CancelCalculateCommand = new DelegateCommand(CancelCalculate);
         }
 
         public void Save()
@@ -92,12 +93,29 @@ namespace Altkom.Shop.ViewModels
             }
         }
 
+        CancellationTokenSource cancellationTokenSource;
 
         public async void Calculate()
         {
             IProgress<int> progress = new Progress<int>(counter => Counter = counter);
 
-            TotalAmount = await productCalculator.CalculateAsync(Products, progress);
+            cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromSeconds(5));
+
+            CancellationToken cancellationToken = cancellationTokenSource.Token;
+
+            try
+            {
+                TotalAmount = await productCalculator.CalculateAsync(Products, cancellationToken, progress);
+            }
+            catch(OperationCanceledException e)
+            {
+                Counter = 0;                
+            }
+        }
+
+        public void CancelCalculate()
+        {
+            cancellationTokenSource.Cancel();
         }
     }
 }

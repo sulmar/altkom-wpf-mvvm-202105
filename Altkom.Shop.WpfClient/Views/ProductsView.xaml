@@ -69,6 +69,8 @@
                 <Button Command="{Binding SaveCommand}">Save</Button>
                 <Button Command="{Binding CalculateCommand}" Style="{StaticResource PrimaryButtonStyle}">Calculate</Button>
 
+                <Button Command="{Binding CancelCalculateCommand}">Cancel</Button>
+
                 <ProgressBar
                     Width="200"
                     Height="20"

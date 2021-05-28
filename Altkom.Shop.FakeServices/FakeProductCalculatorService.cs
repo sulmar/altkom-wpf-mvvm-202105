@@ -11,7 +11,7 @@ namespace Altkom.Shop.FakeServices
 {
     public class FakeProductCalculatorService : IProductCalculatorService
     {
-        public decimal Calculate(IEnumerable<Product> products, IProgress<int> progress = null)
+        public decimal Calculate(IEnumerable<Product> products, CancellationToken cancellationToken, IProgress<int> progress = null)
         {
             decimal result = 0;
 
@@ -19,7 +19,21 @@ namespace Altkom.Shop.FakeServices
 
             foreach (var product in products)
             {
+                //if (cancellationToken.IsCancellationRequested)
+                //{
+                //    break;
+                //}
+
+                //if (cancellationToken.IsCancellationRequested)
+                //{
+                //    throw new OperationCanceledException();
+                //}
+
+                cancellationToken.ThrowIfCancellationRequested();
+
                 result += product.UnitPrice;
+
+                
 
                 Thread.Sleep(TimeSpan.FromSeconds(1));
 
@@ -29,9 +43,9 @@ namespace Altkom.Shop.FakeServices
             return result;
         }
 
-        public Task<decimal> CalculateAsync(IEnumerable<Product> products, IProgress<int> progress = null)
+        public Task<decimal> CalculateAsync(IEnumerable<Product> products, CancellationToken cancellationToken, IProgress<int> progress = null)
         {
-            return Task.Run(()=> Calculate(products, progress));
+            return Task.Run(()=> Calculate(products, cancellationToken, progress));
         }
     }
 }
