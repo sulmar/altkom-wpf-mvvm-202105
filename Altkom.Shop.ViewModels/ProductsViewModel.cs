@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Altkom.Shop.ViewModels
@@ -12,9 +13,23 @@ namespace Altkom.Shop.ViewModels
 
     public class ProductsViewModel : BaseViewModel
     {
-        public ICollection<Product> Products { get; set; }
+        public ICollection<Product> Products
+        {
+            get => products; set
+            {
+                products = value;
+                OnPropertyChanged();
+            }
+        }
 
-        public IEnumerable<string> Colors { get; set; }
+        public IEnumerable<string> Colors
+        {
+            get => colors; set
+            {
+                colors = value;
+                OnPropertyChanged();
+            }
+        }
 
         public decimal TotalAmount
         {
@@ -42,6 +57,7 @@ namespace Altkom.Shop.ViewModels
         public ICommand DiscountCommand { get; private set; }
         public ICommand CalculateCommand { get; private set; }
         public ICommand CancelCalculateCommand { get; private set; }
+        public ICommand LoadCommand { get; private set; }
 
         #endregion
 
@@ -56,14 +72,21 @@ namespace Altkom.Shop.ViewModels
             this.productService = productService;
             this.productCalculator = productCalculator;
 
-            Products = productService.Get().ToList();
-
-            Colors = Products.Select(p => p.Color).Distinct().ToList();
-
             SaveCommand = new DelegateCommand(Save, CanSave);
             DiscountCommand = new DelegateCommand<Product>(Discount);
             CalculateCommand = new DelegateCommand(Calculate);
             CancelCalculateCommand = new DelegateCommand(CancelCalculate);
+
+            LoadCommand = new DelegateCommand(async () => await LoadAsync());
+        }
+
+        public async Task LoadAsync()
+        {
+            var products = await productService.GetAsync();
+
+            Products = products.ToList();
+
+            Colors = Products.Select(p => p.Color).Distinct().ToList();
         }
 
         public void Save()
@@ -94,6 +117,8 @@ namespace Altkom.Shop.ViewModels
         }
 
         CancellationTokenSource cancellationTokenSource;
+        private ICollection<Product> products;
+        private IEnumerable<string> colors;
 
         public async void Calculate()
         {
@@ -107,9 +132,9 @@ namespace Altkom.Shop.ViewModels
             {
                 TotalAmount = await productCalculator.CalculateAsync(Products, cancellationToken, progress);
             }
-            catch(OperationCanceledException e)
+            catch (OperationCanceledException e)
             {
-                Counter = 0;                
+                Counter = 0;
             }
         }
 

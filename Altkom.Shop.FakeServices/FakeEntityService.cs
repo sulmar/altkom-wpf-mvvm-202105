@@ -13,7 +13,7 @@ namespace Altkom.Shop.FakeServices
     {
         protected ICollection<TEntity> entities;
 
-        readonly TimeSpan interval = TimeSpan.FromSeconds(5);
+        readonly TimeSpan interval = TimeSpan.FromSeconds(3);
 
         public FakeEntityService(Faker<TEntity> faker)
         {
@@ -30,7 +30,7 @@ namespace Altkom.Shop.FakeServices
 
         public IEnumerable<TEntity> Get()
         {
-            // Thread.Sleep(interval);
+            Thread.Sleep(interval);
 
             return entities;
         }

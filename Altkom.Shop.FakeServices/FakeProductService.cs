@@ -3,6 +3,7 @@ using Altkom.Shop.Models;
 using Bogus;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Altkom.Shop.FakeServices
 {
@@ -19,6 +20,11 @@ namespace Altkom.Shop.FakeServices
             
 
             return entities.Where(p => p.Color == color);
+        }
+
+        public Task<IEnumerable<Product>> GetAsync()
+        {
+            return Task.Run(() => Get());
         }
     }
 }
