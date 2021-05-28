@@ -36,7 +36,7 @@
             <DockPanel>
 
                 <!--  Panel Search  -->
-                <StackPanel DockPanel.Dock="Top">
+                <StackPanel DataContext="{Binding SearchCriteria}" DockPanel.Dock="Top">
 
                     <StackPanel.Resources>
 
@@ -48,25 +48,32 @@
                             <Setter Property="VerticalAlignment" Value="Center" />
                             <Setter Property="Width" Value="100" />
                             <Setter Property="Margin" Value="5" />
+
+
                         </Style>
                     </StackPanel.Resources>
 
                     <StackPanel Orientation="Horizontal">
                         <Label>Unit Price</Label>
-                        <TextBox Text="100" />
-                        <TextBox Text="200" />
+                        <TextBox Text="{Binding UnitPriceFrom}" />
+                        <TextBox Text="{Binding UnitPriceTo}" />
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal">
                         <Label>Weight</Label>
-                        <TextBox Text="100" />
-                        <TextBox Text="200" />
+                        <TextBox Text="{Binding WeightFrom}" />
+                        <TextBox Text="{Binding WeightTo}" />
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal">
                         <Label>Color</Label>
-                        <ComboBox Width="210" ItemsSource="{Binding Colors}" />
+                        <ComboBox
+                            Width="210"
+                            ItemsSource="{Binding DataContext.Colors, ElementName=productsView}"
+                            SelectedValue="{Binding Color}" />
                     </StackPanel>
+
+                    <Button Command="{Binding DataContext.SearchCommand, ElementName=productsView}">Search</Button>
 
 
                 </StackPanel>

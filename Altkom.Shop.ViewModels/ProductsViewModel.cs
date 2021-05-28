@@ -1,6 +1,7 @@
 ﻿using Altkom.Shop.FakeServices;
 using Altkom.Shop.IServices;
 using Altkom.Shop.Models;
+using Altkom.Shop.Models.SearchCriterias;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -61,6 +62,9 @@ namespace Altkom.Shop.ViewModels
             }
         }
 
+
+        public ProductSearchCriteria SearchCriteria { get; set; }
+
         #region Commands
 
         public ICommand SaveCommand { get; private set; }
@@ -68,6 +72,7 @@ namespace Altkom.Shop.ViewModels
         public ICommand CalculateCommand { get; private set; }
         public ICommand CancelCalculateCommand { get; private set; }
         public ICommand LoadCommand { get; private set; }
+        public ICommand SearchCommand { get; private set; }
 
         #endregion
 
@@ -88,6 +93,9 @@ namespace Altkom.Shop.ViewModels
             CancelCalculateCommand = new DelegateCommand(CancelCalculate);
 
             LoadCommand = new DelegateCommand(async () => await LoadAsync());
+            SearchCommand = new DelegateCommand(Search);
+
+            SearchCriteria = new ProductSearchCriteria();
         }
 
         public async Task LoadAsync()
@@ -101,6 +109,11 @@ namespace Altkom.Shop.ViewModels
             Colors = Products.Select(p => p.Color).Distinct().ToList();
 
             IsLoading = false;
+        }
+
+        public void Search()
+        {
+            Products = productService.Get(SearchCriteria).ToList();
         }
 
         public void Save()
