@@ -13,6 +13,16 @@ namespace Altkom.Shop.ViewModels
 
     public class ProductsViewModel : BaseViewModel
     {
+
+        public bool IsLoading
+        {
+            get => isLoading; set
+            {
+                isLoading = value;
+                OnPropertyChanged();
+            }
+        }
+
         public ICollection<Product> Products
         {
             get => products; set
@@ -82,11 +92,15 @@ namespace Altkom.Shop.ViewModels
 
         public async Task LoadAsync()
         {
+            IsLoading = true;
+
             var products = await productService.GetAsync();
 
             Products = products.ToList();
 
             Colors = Products.Select(p => p.Color).Distinct().ToList();
+
+            IsLoading = false;
         }
 
         public void Save()
@@ -119,6 +133,7 @@ namespace Altkom.Shop.ViewModels
         CancellationTokenSource cancellationTokenSource;
         private ICollection<Product> products;
         private IEnumerable<string> colors;
+        private bool isLoading;
 
         public async void Calculate()
         {

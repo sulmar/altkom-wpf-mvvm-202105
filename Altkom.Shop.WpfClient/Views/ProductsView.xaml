@@ -30,13 +30,34 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <ListBox
-            Margin="5"
-            HorizontalContentAlignment="Stretch"
-            ItemTemplate="{StaticResource ProductTemplate}"
-            ItemsSource="{Binding Products}"
-            SelectedItem="{Binding SelectedProduct}"
-            Template="{StaticResource RounderListBoxTemplate}" />
+        <Grid>
+
+            <ListBox
+                Margin="5"
+                HorizontalContentAlignment="Stretch"
+                ItemTemplate="{StaticResource ProductTemplate}"
+                ItemsSource="{Binding Products}"
+                SelectedItem="{Binding SelectedProduct}"
+                Template="{StaticResource RounderListBoxTemplate}" />
+
+            <ProgressBar
+                Width="100"
+                Height="20"
+                IsIndeterminate="True">
+
+                <ProgressBar.Style>
+                    <Style TargetType="ProgressBar">
+                        <Setter Property="Visibility" Value="Hidden" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsLoading}" Value="True">
+                                <Setter Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ProgressBar.Style>
+            </ProgressBar>
+
+        </Grid>
 
         <!--<ListBox
             Margin="5"
