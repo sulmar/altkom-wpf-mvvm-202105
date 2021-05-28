@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:local="clr-namespace:Altkom.Shop.WpfClient.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
@@ -96,7 +97,14 @@
 
         <StackPanel Grid.Column="1" Orientation="Horizontal">
 
-            <Button>Help</Button>
+            <Button Content="Help">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <i:LaunchUriOrFileAction Path="{Binding Url}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+
+            </Button>
 
             <Button Content="Home" />
 

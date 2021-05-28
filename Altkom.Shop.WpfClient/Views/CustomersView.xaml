@@ -99,8 +99,25 @@
 
                 <i:Interaction.Behaviors>
                     <b:MouseEnterButtonBehavior Offset="{Binding ElementName=OffsetSlider, Path=Value}" />
-                    <b:MouseEnterToCommandBehavior Command="{Binding SendCommand}" />
+                    <!--<b:MouseEnterToCommandBehavior Command="{Binding SendCommand}" />-->
+                    
+                    
                 </i:Interaction.Behaviors>
+
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseEnter">
+                        <i:InvokeCommandAction Command="{Binding SendCommand}" />
+                    </i:EventTrigger>
+
+                    <i:EventTrigger EventName="MouseLeave">
+                        <i:ChangePropertyAction PropertyName="Background" Value="Green" />
+                        
+                    </i:EventTrigger>
+                    
+                    
+                </i:Interaction.Triggers>
+                
+                
 
             </Button>
 

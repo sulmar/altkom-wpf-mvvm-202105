@@ -25,11 +25,19 @@ namespace Altkom.Shop.ViewModels
         public ShellViewModel()
         {
             ShowViewCommand = new DelegateCommand<string>(ShowView);
+
+            Url = "http://www.altkom.pl";
         }
 
         private void ShowView(string view)
         {
             SelectedView = view;
         }
+
+
+        public string Url { get; set; }
+
+
+       
     }
 }
