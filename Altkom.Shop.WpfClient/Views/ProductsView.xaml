@@ -80,24 +80,24 @@
 
                     <StackPanel Orientation="Horizontal">
                         <Label>Unit Price</Label>
-                        <TextBox>
-                            <TextBox.Text>
+                        <TextBox Text="{Binding UnitPriceFrom, ValidatesOnNotifyDataErrors=True}">
+                            <!--<TextBox.Text>
                                 <Binding Path="UnitPriceFrom">
                                     <Binding.ValidationRules>
                                         <vr:UnitPriceRangeRule Maximum="100" Minimum="0" />
                                     </Binding.ValidationRules>
                                 </Binding>
-                            </TextBox.Text>
+                            </TextBox.Text>-->
                         </TextBox>
 
-                        <TextBox>
-                            <TextBox.Text>
+                        <TextBox Text="{Binding UnitPriceTo, ValidatesOnDataErrors=True}">
+                            <!--<TextBox.Text>
                                 <Binding Path="UnitPriceTo">
                                     <Binding.ValidationRules>
                                         <vr:UnitPriceRangeRule Maximum="100" Minimum="0" />
                                     </Binding.ValidationRules>
                                 </Binding>
-                            </TextBox.Text>
+                            </TextBox.Text>-->
                         </TextBox>
                     </StackPanel>
 
