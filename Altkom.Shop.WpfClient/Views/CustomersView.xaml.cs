@@ -32,5 +32,6 @@ namespace Altkom.Shop.WpfClient.Views
 
             // this.DataContext = new CustomersViewModel();
         }
+
     }
 }
