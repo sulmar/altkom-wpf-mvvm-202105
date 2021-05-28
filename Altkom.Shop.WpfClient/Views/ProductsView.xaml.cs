@@ -24,5 +24,10 @@ namespace Altkom.Shop.WpfClient.Views
         {
             InitializeComponent();
         }
+
+        private void StackPanel_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

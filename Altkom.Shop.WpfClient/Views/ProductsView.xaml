@@ -9,6 +9,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:me="clr-namespace:Altkom.Shop.WpfClient.MarkupExtensions"
     xmlns:vm="clr-namespace:Altkom.Shop.ViewModels;assembly=Altkom.Shop.ViewModels"
+    xmlns:vr="clr-namespace:Altkom.Shop.WpfClient.ValidationRules"
     x:Name="productsView"
     Title="ProductsView"
     d:Background="White"
@@ -36,7 +37,16 @@
             <DockPanel>
 
                 <!--  Panel Search  -->
-                <StackPanel DataContext="{Binding SearchCriteria}" DockPanel.Dock="Top">
+                <StackPanel
+                    DataContext="{Binding SearchCriteria}"
+                    DockPanel.Dock="Top"
+                    TextBoxBase.TextChanged="StackPanel_TextChanged">
+
+                    <!--<i:Interaction.Triggers>
+                        <i:EventTrigger EventName="TextBoxBase.TextChanged">
+                            <i:InvokeCommandAction Command="{Binding ElementName=productsView, Path=DataContext.SearchCommand}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>-->
 
                     <StackPanel.Resources>
 
@@ -44,10 +54,25 @@
                             <Setter Property="Width" Value="70" />
                         </Style>
 
+
+                        <ControlTemplate x:Key="MyErrorTemplate">
+                            <Border BorderBrush="red" BorderThickness="1">
+                                <StackPanel>
+                                    <AdornedElementPlaceholder />
+                                    <TextBlock Foreground="Red">!</TextBlock>
+                                </StackPanel>
+                            </Border>
+
+                        </ControlTemplate>
+
                         <Style TargetType="TextBox">
                             <Setter Property="VerticalAlignment" Value="Center" />
                             <Setter Property="Width" Value="100" />
                             <Setter Property="Margin" Value="5" />
+
+                            <Setter Property="Validation.ErrorTemplate" Value="{StaticResource MyErrorTemplate}" />
+
+
 
 
                         </Style>
@@ -55,8 +80,25 @@
 
                     <StackPanel Orientation="Horizontal">
                         <Label>Unit Price</Label>
-                        <TextBox Text="{Binding UnitPriceFrom}" />
-                        <TextBox Text="{Binding UnitPriceTo}" />
+                        <TextBox>
+                            <TextBox.Text>
+                                <Binding Path="UnitPriceFrom">
+                                    <Binding.ValidationRules>
+                                        <vr:UnitPriceRangeRule Maximum="100" Minimum="0" />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+
+                        <TextBox>
+                            <TextBox.Text>
+                                <Binding Path="UnitPriceTo">
+                                    <Binding.ValidationRules>
+                                        <vr:UnitPriceRangeRule Maximum="100" Minimum="0" />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal">
@@ -65,13 +107,13 @@
                         <TextBox Text="{Binding WeightTo}" />
                     </StackPanel>
 
-                    <StackPanel Orientation="Horizontal">
+                    <!--<StackPanel Orientation="Horizontal">
                         <Label>Color</Label>
                         <ComboBox
                             Width="210"
                             ItemsSource="{Binding DataContext.Colors, ElementName=productsView}"
                             SelectedValue="{Binding Color}" />
-                    </StackPanel>
+                    </StackPanel>-->
 
                     <Button Command="{Binding DataContext.SearchCommand, ElementName=productsView}">Search</Button>
 
