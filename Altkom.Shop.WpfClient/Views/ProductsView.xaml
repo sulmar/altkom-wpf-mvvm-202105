@@ -2,7 +2,9 @@
     x:Class="Altkom.Shop.WpfClient.Views.ProductsView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:b="clr-namespace:Altkom.Shop.WpfClient.Behaviors"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:local="clr-namespace:Altkom.Shop.WpfClient.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="clr-namespace:Altkom.Shop.ViewModels;assembly=Altkom.Shop.ViewModels"
@@ -74,7 +76,13 @@
                     d:Value="4"
                     Maximum="{Binding Products.Count}"
                     Minimum="0"
-                    Value="{Binding Counter}" />
+                    Value="{Binding Counter}">
+
+                    <i:Interaction.Behaviors>
+                        <b:ProgresBarAnimateBehavior />
+                    </i:Interaction.Behaviors>
+
+                </ProgressBar>
 
                 <TextBlock
                     Margin="10"
